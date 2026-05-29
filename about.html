@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BodyCheck — Learn about our mission to make health information accessible, clear, and empowering." />
+  <title>BodyCheck — About Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
+        </div>
+        <span>BodyCheck</span>
+      </a>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
+        </div>
+        <span>BodyCheck</span>
+      </a>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+      <a href="body-map.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        Symptom Navigator
+      </a>
+      <a href="consultation.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Consultation
+      </a>
+      <a href="about.html" class="sidebar-link active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        About
+      </a>
+      <a href="consultation.html#hospital-finder" class="sidebar-link emergency">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Emergency
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <p>BodyCheck v2.0 — Health Dashboard</p>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="about-page" id="main">
+    <div class="container">
+
+      <!-- Hero -->
+      <section class="about-hero">
+        <h1>The Story Behind <span class="text-gradient">BodyCheck</span></h1>
+        <p>We believe understanding your health should feel calm, clear, and empowering — not confusing or scary.</p>
+      </section>
+
+      <!-- Quote -->
+      <blockquote class="about-quote">
+        <p>"I got sick and spent hours searching for answers online. Every website I found was confusing, overloaded, or made me feel worse. I knew there had to be a better way."</p>
+        <cite>— The moment BodyCheck was born</cite>
+      </blockquote>
+
+      <!-- Our Story -->
+      <section class="about-section">
+        <div class="about-section-header">
+          <h2>Our <span class="text-gradient">Story</span></h2>
+          <p>How a frustrating personal experience became a mission to help others.</p>
+        </div>
+
+        <div class="about-story-grid">
+          <div class="about-story-card">
+            <div class="about-card-icon" style="background: var(--error-bg); color: var(--error);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            </div>
+            <h3>The Problem</h3>
+            <p>After personally getting sick and desperately searching for symptom clarity, every platform felt overwhelming. Medical jargon, cluttered interfaces, and alarming content made the experience worse, not better.</p>
+          </div>
+
+          <div class="about-story-card">
+            <div class="about-card-icon" style="background: var(--info-bg); color: var(--info);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            </div>
+            <h3>The Idea</h3>
+            <p>What if health information could be presented calmly and clearly? A tool that helps you understand your body without panic — with clean design, simple navigation, and honest guidance.</p>
+          </div>
+
+          <div class="about-story-card">
+            <div class="about-card-icon" style="background: var(--success-bg); color: var(--success);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3>The Solution</h3>
+            <p>BodyCheck was built to be the health companion we wished existed — minimal, fast, and focused on building confidence rather than fear. A place to learn, not to panic.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why BodyCheck Exists -->
+      <section class="about-section">
+        <div class="about-section-header">
+          <h2>Why BodyCheck <span class="text-gradient">Exists</span></h2>
+        </div>
+
+        <div class="about-values">
+          <div class="about-value">
+            <div class="about-value-icon" style="background: var(--success-bg);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+            </div>
+            <div>
+              <h4>Clarity Over Fear</h4>
+              <p>Health information should inform and reassure, not terrify. We present facts calmly.</p>
+            </div>
+          </div>
+
+          <div class="about-value">
+            <div class="about-value-icon" style="background: var(--info-bg);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--info)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+            <div>
+              <h4>Simplicity First</h4>
+              <p>No clutter, no ads, no overwhelming dashboards. Just the tools you need, when you need them.</p>
+            </div>
+          </div>
+
+          <div class="about-value">
+            <div class="about-value-icon" style="background: var(--warning-bg);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <h4>For Everyone</h4>
+              <p>Accessible to anyone regardless of medical knowledge. Plain language, intuitive interface.</p>
+            </div>
+          </div>
+
+          <div class="about-value">
+            <div class="about-value-icon" style="background: rgba(139, 92, 246, 0.1);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div>
+              <h4>Always Improving</h4>
+              <p>We listen, learn, and evolve. BodyCheck grows with the needs of its community.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mission -->
+      <section class="about-section">
+        <div class="about-section-header">
+          <h2>Our <span class="text-gradient">Mission</span></h2>
+        </div>
+
+        <div class="about-story-grid" style="grid-template-columns: 1fr;">
+          <div class="about-story-card" style="text-align: center; max-width: 640px; margin: 0 auto;">
+            <div class="about-card-icon" style="background: var(--accent-light); color: var(--accent); margin: 0 auto 1.25rem;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+            <h3>Empowering Confident Health Decisions</h3>
+            <p>Our mission is to give every person the tools and knowledge to understand their body with confidence. We bridge the gap between confusing medical information and everyday understanding — helping you take the right next step, whether that's a home remedy or a doctor visit.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contributors -->
+      <section class="about-section">
+        <div class="about-section-header">
+          <h2><span class="text-gradient">Contributors</span></h2>
+          <p>The people behind BodyCheck.</p>
+        </div>
+
+        <div class="about-contributors-grid">
+          <div class="about-contributor">
+            <div class="about-contributor-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <h4>Sathwik Akkenakunta</h4>
+            <p>Creator & Lead Developer</p>
+          </div>
+          <div class="about-contributor">
+            <div class="about-contributor-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h4>Community</h4>
+            <p>Open Source Contributors</p>
+          </div>
+          <div class="about-contributor">
+            <div class="about-contributor-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+            <h4>You</h4>
+            <p>Future Contributor</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vision -->
+      <section class="about-section">
+        <div class="about-section-header">
+          <h2>Vision for the <span class="text-gradient">Future</span></h2>
+          <p>Where BodyCheck is heading.</p>
+        </div>
+
+        <div class="about-story-grid">
+          <div class="about-story-card">
+            <div class="about-card-icon" style="background: var(--info-bg); color: var(--info);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            </div>
+            <h3>Global Health Literacy</h3>
+            <p>Expanding to support multiple languages and making health understanding universal, regardless of location or background.</p>
+          </div>
+
+          <div class="about-story-card">
+            <div class="about-card-icon" style="background: rgba(139, 92, 246, 0.1); color: #8B5CF6;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+            <h3>Smarter Insights</h3>
+            <p>Integrating intelligent analysis to provide more personalized, accurate symptom understanding while maintaining simplicity.</p>
+          </div>
+
+          <div class="about-story-card">
+            <div class="about-card-icon" style="background: var(--success-bg); color: var(--success);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Community Driven</h3>
+            <p>Building a supportive community where people share experiences, learn from each other, and feel less alone in their health journey.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="about-section" style="text-align: center; padding-bottom: 3rem;">
+        <h2>Ready to Understand Your <span class="text-gradient">Body Better</span>?</h2>
+        <p style="max-width: 480px; margin: 0.5rem auto 1.5rem;">Start exploring symptoms, find remedies, and take confident steps toward better health.</p>
+        <a href="body-map.html" class="btn btn-primary btn-lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          Start Exploring
+        </a>
+      </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <p>&copy; 2025 BodyCheck. For informational purposes only.</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="body-map.html">Symptoms</a>
+            <a href="consultation.html">Consultation</a>
+            <a href="about.html">About</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
