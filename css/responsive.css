@@ -19,11 +19,10 @@
 /* Mobile */
 @media (max-width: 768px) {
   .hero { padding: 2rem 0 1.5rem; }
-  .hero-header h1 { font-size: 1.5rem; }
-  .dashboard-grid { grid-template-columns: 1fr; }
+  .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .services-grid { grid-template-columns: 1fr; }
-  .doctors-grid { grid-template-columns: 1fr; }
+  .doctors-grid { grid-template-columns: repeat(2, 1fr); }
   .consultation-stats-grid { grid-template-columns: repeat(2, 1fr); }
   .hospital-search { flex-direction: column; }
   .hospital-search-input { min-width: 100%; }
@@ -32,15 +31,20 @@
   .footer-links { justify-content: center; }
   .anatomy-topbar-inner { flex-direction: column; gap: 0.75rem; }
   .anatomy-search { max-width: 100%; }
+
+  .about-story-grid { grid-template-columns: 1fr; }
+  .about-contributors-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-values { grid-template-columns: 1fr; }
 }
 
 /* Small mobile */
 @media (max-width: 480px) {
-  .container { padding: 0 1rem; }
-  .hero-header h1 { font-size: 1.375rem; }
-  .dashboard-grid { gap: 0.75rem; }
-  .dash-card { padding: 1.25rem; }
+  .dashboard-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .dash-card { padding: 1.25rem; min-height: 140px; }
   .stats-row { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   .stat-card { padding: 1rem; }
   .consultation-stats-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .doctors-grid { grid-template-columns: 1fr; }
+  .filter-btn { padding: 0.5rem 0.875rem; font-size: 0.75rem; }
+  .about-contributors-grid { grid-template-columns: 1fr; }
 }

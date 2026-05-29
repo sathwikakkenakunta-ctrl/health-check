@@ -23,29 +23,26 @@
 }
 
 /* Staggered card entrance */
-.dash-card { opacity: 0; animation: fadeIn 0.3s ease forwards; }
-.dash-card:nth-child(1) { animation-delay: 0.05s; }
-.dash-card:nth-child(2) { animation-delay: 0.1s; }
-.dash-card:nth-child(3) { animation-delay: 0.15s; }
-.dash-card:nth-child(4) { animation-delay: 0.2s; }
-.dash-card:nth-child(5) { animation-delay: 0.25s; }
-.dash-card:nth-child(6) { animation-delay: 0.3s; }
+.dash-card { opacity: 0; animation: fadeIn 0.35s ease forwards; }
+.dash-card:nth-child(1) { animation-delay: 0.04s; }
+.dash-card:nth-child(2) { animation-delay: 0.08s; }
+.dash-card:nth-child(3) { animation-delay: 0.12s; }
+.dash-card:nth-child(4) { animation-delay: 0.16s; }
+.dash-card:nth-child(5) { animation-delay: 0.2s; }
+.dash-card:nth-child(6) { animation-delay: 0.24s; }
 
-.service-card { opacity: 0; animation: fadeIn 0.3s ease forwards; }
-.service-card:nth-child(1) { animation-delay: 0.05s; }
-.service-card:nth-child(2) { animation-delay: 0.1s; }
-.service-card:nth-child(3) { animation-delay: 0.15s; }
-.service-card:nth-child(4) { animation-delay: 0.2s; }
-.service-card:nth-child(5) { animation-delay: 0.25s; }
-.service-card:nth-child(6) { animation-delay: 0.3s; }
+.service-card { opacity: 0; animation: fadeIn 0.35s ease forwards; }
+.service-card:nth-child(1) { animation-delay: 0.04s; }
+.service-card:nth-child(2) { animation-delay: 0.08s; }
+.service-card:nth-child(3) { animation-delay: 0.12s; }
 
-.doctor-card { opacity: 0; animation: fadeIn 0.3s ease forwards; }
-.doctor-card:nth-child(1) { animation-delay: 0.05s; }
-.doctor-card:nth-child(2) { animation-delay: 0.1s; }
-.doctor-card:nth-child(3) { animation-delay: 0.15s; }
-.doctor-card:nth-child(4) { animation-delay: 0.2s; }
-.doctor-card:nth-child(5) { animation-delay: 0.25s; }
-.doctor-card:nth-child(6) { animation-delay: 0.3s; }
+.doctor-card { opacity: 0; animation: fadeIn 0.35s ease forwards; }
+.doctor-card:nth-child(1) { animation-delay: 0.04s; }
+.doctor-card:nth-child(2) { animation-delay: 0.08s; }
+.doctor-card:nth-child(3) { animation-delay: 0.12s; }
+.doctor-card:nth-child(4) { animation-delay: 0.16s; }
+.doctor-card:nth-child(5) { animation-delay: 0.2s; }
+.doctor-card:nth-child(6) { animation-delay: 0.24s; }
 
 /* Sidebar link entrance */
 .sidebar-link { opacity: 0; animation: slideInLeft 0.2s ease forwards; }
@@ -66,3 +63,31 @@
 .stat-card:nth-child(2) { animation-delay: 0.1s; }
 .stat-card:nth-child(3) { animation-delay: 0.15s; }
 .stat-card:nth-child(4) { animation-delay: 0.2s; }
+
+/* About page */
+.about-hero { opacity: 0; animation: fadeIn 0.4s ease forwards; animation-delay: 0.05s; }
+.about-quote { opacity: 0; animation: fadeIn 0.4s ease forwards; animation-delay: 0.1s; }
+
+.about-story-card { opacity: 0; animation: fadeIn 0.35s ease forwards; }
+.about-story-card:nth-child(1) { animation-delay: 0.06s; }
+.about-story-card:nth-child(2) { animation-delay: 0.12s; }
+.about-story-card:nth-child(3) { animation-delay: 0.18s; }
+
+.about-contributor { opacity: 0; animation: fadeInScale 0.3s ease forwards; }
+.about-contributor:nth-child(1) { animation-delay: 0.05s; }
+.about-contributor:nth-child(2) { animation-delay: 0.1s; }
+.about-contributor:nth-child(3) { animation-delay: 0.15s; }
+
+.about-value { opacity: 0; animation: fadeIn 0.3s ease forwards; }
+.about-value:nth-child(1) { animation-delay: 0.04s; }
+.about-value:nth-child(2) { animation-delay: 0.08s; }
+.about-value:nth-child(3) { animation-delay: 0.12s; }
+.about-value:nth-child(4) { animation-delay: 0.16s; }
+
+/* Consultation page header */
+.consultation-header { opacity: 0; animation: fadeIn 0.4s ease forwards; animation-delay: 0.05s; }
+.consultation-stat { opacity: 0; animation: fadeInScale 0.3s ease forwards; }
+.consultation-stat:nth-child(1) { animation-delay: 0.05s; }
+.consultation-stat:nth-child(2) { animation-delay: 0.1s; }
+.consultation-stat:nth-child(3) { animation-delay: 0.15s; }
+.consultation-stat:nth-child(4) { animation-delay: 0.2s; }
