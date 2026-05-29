@@ -1,0 +1,919 @@
+[
+  {
+    "bodyPart": "Head",
+    "icon": "🧠",
+    "region": "head",
+    "symptoms": [
+      {
+        "name": "Headache",
+        "seriousness": "Mild",
+        "causes": ["Stress", "Dehydration", "Eye strain", "Lack of sleep", "Caffeine withdrawal"],
+        "remedies": ["Rest in a dark room", "Drink water", "Over-the-counter pain relievers", "Cold compress on forehead", "Peppermint oil on temples"],
+        "exercises": ["Neck stretches", "Deep breathing exercises", "Progressive muscle relaxation"],
+        "hydration": "Drink at least 8 glasses of water daily. Dehydration is one of the most common headache triggers.",
+        "nutrition": ["Magnesium-rich foods (spinach, almonds)", "Omega-3 fatty acids (salmon, walnuts)", "Avoid processed foods and excess sugar"],
+        "prevention": ["Regular sleep schedule", "Stay hydrated", "Manage stress", "Limit screen time", "Regular exercise"],
+        "emergency": false
+      },
+      {
+        "name": "Tension Headache",
+        "seriousness": "Mild",
+        "causes": ["Stress", "Poor posture", "Eye strain", "Jaw clenching", "Lack of sleep"],
+        "remedies": ["Apply heat or cold to neck", "Gentle neck massage", "Over-the-counter pain relievers", "Improve posture", "Relaxation techniques"],
+        "exercises": ["Neck stretches", "Shoulder rolls", "Deep breathing", "Jaw relaxation exercises"],
+        "hydration": "Stay hydrated to reduce muscle tension and headache frequency.",
+        "nutrition": ["Magnesium-rich foods", "Avoid excessive caffeine", "Regular meals to prevent blood sugar drops"],
+        "prevention": ["Manage stress", "Regular breaks from screens", "Ergonomic workspace", "Regular sleep schedule"],
+        "emergency": false
+      },
+      {
+        "name": "Dizziness",
+        "seriousness": "Moderate",
+        "causes": ["Low blood pressure", "Inner ear problems", "Dehydration", "Anemia", "Medication side effects"],
+        "remedies": ["Sit or lie down immediately", "Drink water", "Eat something with sugar", "Avoid sudden movements", "Ginger tea"],
+        "exercises": ["Balance exercises", "Epley maneuver (for BPPV)", "Vestibular rehabilitation"],
+        "hydration": "Drink fluids regularly. Dehydration and low blood sugar are common causes of dizziness.",
+        "nutrition": ["Iron-rich foods if anemic", "Complex carbohydrates", "Avoid excess salt"],
+        "prevention": ["Rise slowly from sitting/lying", "Stay hydrated", "Avoid alcohol", "Regular meals"],
+        "emergency": true
+      },
+      {
+        "name": "Migraine",
+        "seriousness": "Serious",
+        "causes": ["Hormonal changes", "Certain foods (aged cheese, wine)", "Sensory stimuli", "Weather changes", "Genetics"],
+        "remedies": ["Prescription triptans", "Rest in dark, quiet room", "Cold compress", "Caffeine in small amounts", "Anti-nausea medication"],
+        "exercises": ["Yoga", "Gentle walking", "Tai chi"],
+        "hydration": "Maintain consistent hydration. Avoid alcohol and excessive caffeine which can trigger migraines.",
+        "nutrition": ["Avoid trigger foods (chocolate, aged cheese, MSG)", "Eat regular meals", "Riboflavin (vitamin B2) supplements"],
+        "prevention": ["Identify and avoid triggers", "Regular sleep pattern", "Stress management", "Preventive medications if frequent"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Eyes",
+    "icon": "👁️",
+    "region": "head",
+    "symptoms": [
+      {
+        "name": "Eye Strain",
+        "seriousness": "Mild",
+        "causes": ["Prolonged screen use", "Reading in dim light", "Driving long distances", "Uncorrected vision", "Dry air"],
+        "remedies": ["20-20-20 rule (every 20 min, look 20 ft away for 20 sec)", "Artificial tears", "Adjust screen brightness", "Warm compress", "Reduce glare"],
+        "exercises": ["Eye rolling", "Focus shifting", "Palming (covering eyes with palms)", "Blinking exercises"],
+        "hydration": "Stay well-hydrated to maintain tear production and eye moisture.",
+        "nutrition": ["Vitamin A (carrots, sweet potatoes)", "Lutein (leafy greens)", "Omega-3 fatty acids"],
+        "prevention": ["Regular eye exams", "Proper lighting", "Screen breaks", "Anti-glare screens", "Correct prescription glasses"],
+        "emergency": false
+      },
+      {
+        "name": "Dry Eyes",
+        "seriousness": "Mild",
+        "causes": ["Aging", "Screen time", "Dry environment", "Contact lenses", "Certain medications"],
+        "remedies": ["Artificial tears", "Blink more frequently", "Use a humidifier", "Warm compress", "Omega-3 supplements"],
+        "exercises": ["Blinking exercises", "Eye massage"],
+        "hydration": "Drink plenty of water to support tear production.",
+        "nutrition": ["Omega-3 fatty acids", "Vitamin A", "Flaxseed oil"],
+        "prevention": ["Take screen breaks", "Use a humidifier", "Stay hydrated", "Avoid dry air"],
+        "emergency": false
+      },
+      {
+        "name": "Watery Eyes",
+        "seriousness": "Mild",
+        "causes": ["Allergies", "Dry eyes (reflex tearing)", "Blocked tear duct", "Eye irritation", "Bright light"],
+        "remedies": ["Artificial tears", "Cold compress", "Antihistamines if allergic", "Avoid irritants", "Gentle massage of tear duct"],
+        "exercises": ["Blinking exercises", "Eye relaxation"],
+        "hydration": "Stay hydrated to maintain proper tear balance.",
+        "nutrition": ["Anti-inflammatory foods", "Omega-3s", "Vitamin C"],
+        "prevention": ["Avoid allergens", "Protect eyes from wind", "Use artificial tears", "Manage allergies"],
+        "emergency": false
+      },
+      {
+        "name": "Blurred Vision",
+        "seriousness": "Serious",
+        "causes": ["Refractive errors", "Cataracts", "Diabetes", "Glaucoma", "Macular degeneration"],
+        "remedies": ["Update prescription glasses", "Consult ophthalmologist", "Manage blood sugar", "Eye drops as prescribed", "Rest eyes"],
+        "exercises": ["Focus exercises", "Eye yoga"],
+        "hydration": "Adequate hydration supports lens flexibility and overall eye health.",
+        "nutrition": ["Vitamin C and E", "Zinc", "Leafy green vegetables", "Fish rich in omega-3"],
+        "prevention": ["Annual eye exams", "UV protection sunglasses", "Control blood sugar", "Quit smoking"],
+        "emergency": true
+      }
+    ]
+  },
+  {
+    "bodyPart": "Ears",
+    "icon": "👂",
+    "region": "head",
+    "symptoms": [
+      {
+        "name": "Earwax Buildup",
+        "seriousness": "Mild",
+        "causes": ["Natural wax production", "Ear canal shape", "Using cotton swabs", "Hearing aids", "Earbuds"],
+        "remedies": ["Over-the-counter wax softener", "Warm water irrigation", "Mineral oil drops", "Avoid cotton swabs", "Professional cleaning if needed"],
+        "exercises": ["None specific"],
+        "hydration": "Stay hydrated to maintain healthy ear wax consistency.",
+        "nutrition": ["Omega-3 fatty acids", "Vitamin E"],
+        "prevention": ["Don't insert objects in ears", "Use ear drops to soften wax", "Regular ear hygiene"],
+        "emergency": false
+      },
+      {
+        "name": "Ear Pain",
+        "seriousness": "Moderate",
+        "causes": ["Ear infection", "Wax buildup", "Sinus infection", "TMJ disorder", "Foreign object"],
+        "remedies": ["Warm compress", "Over-the-counter pain relief", "Ear drops", "Chewing gum for pressure", "Consult doctor if persistent"],
+        "exercises": ["Jaw stretches for TMJ", "Yawning to equalize pressure"],
+        "hydration": "Stay hydrated to thin mucus and promote drainage from ear and sinus passages.",
+        "nutrition": ["Anti-inflammatory foods", "Vitamin C for immune support", "Zinc supplements"],
+        "prevention": ["Keep ears dry", "Don't insert objects", "Treat allergies promptly", "Avoid loud noise exposure"],
+        "emergency": false
+      },
+      {
+        "name": "Tinnitus (Ringing)",
+        "seriousness": "Moderate",
+        "causes": ["Noise exposure", "Age-related hearing loss", "Earwax blockage", "Medication side effects", "Meniere's disease"],
+        "remedies": ["White noise machines", "Hearing aids if needed", "Avoid silence", "Stress management", "Cognitive behavioral therapy"],
+        "exercises": ["Jaw and neck exercises", "Relaxation techniques"],
+        "hydration": "Reduce caffeine and alcohol which can worsen tinnitus symptoms.",
+        "nutrition": ["Reduce sodium intake", "Avoid caffeine and alcohol", "Zinc and B12 supplements"],
+        "prevention": ["Ear protection in loud environments", "Lower music volume", "Regular hearing checks", "Manage cardiovascular health"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Nose",
+    "icon": "👃",
+    "region": "head",
+    "symptoms": [
+      {
+        "name": "Congestion",
+        "seriousness": "Mild",
+        "causes": ["Common cold", "Allergies", "Sinusitis", "Dry air", "Deviated septum"],
+        "remedies": ["Saline nasal spray", "Steam inhalation", "Humidifier", "Decongestants (short-term)", "Elevate head while sleeping"],
+        "exercises": ["Breathing exercises", "Facial massage around sinuses"],
+        "hydration": "Drink warm fluids (tea, broth) to thin mucus and promote drainage.",
+        "nutrition": ["Spicy foods to clear passages", "Vitamin C", "Honey and lemon", "Garlic (natural antimicrobial)"],
+        "prevention": ["Wash hands frequently", "Avoid allergens", "Use humidifier in dry weather", "Nasal irrigation"],
+        "emergency": false
+      },
+      {
+        "name": "Runny Nose",
+        "seriousness": "Mild",
+        "causes": ["Common cold", "Allergies", "Spicy food", "Cold air", "Hormonal changes"],
+        "remedies": ["Blow nose gently", "Saline spray", "Antihistamines if allergic", "Stay hydrated", "Warm compress on sinuses"],
+        "exercises": ["Breathing exercises", "Facial massage"],
+        "hydration": "Drink plenty of fluids to thin mucus.",
+        "nutrition": ["Vitamin C rich foods", "Warm soups", "Ginger tea", "Honey"],
+        "prevention": ["Wash hands", "Avoid allergens", "Stay warm in cold weather", "Manage allergies"],
+        "emergency": false
+      },
+      {
+        "name": "Sneezing",
+        "seriousness": "Mild",
+        "causes": ["Allergies", "Dust", "Cold virus", "Strong odors", "Bright light (photic sneeze reflex)"],
+        "remedies": ["Identify and avoid triggers", "Antihistamines", "Air purifier", "Dust regularly", "Wash bedding"],
+        "exercises": ["None specific"],
+        "hydration": "Stay hydrated to keep nasal passages moist.",
+        "nutrition": ["Anti-inflammatory foods", "Vitamin C", "Quercetin-rich foods"],
+        "prevention": ["Avoid known allergens", "Keep home clean", "Use air purifier", "Wash hands frequently"],
+        "emergency": false
+      },
+      {
+        "name": "Nosebleed",
+        "seriousness": "Moderate",
+        "causes": ["Dry air", "Nose picking", "Allergies", "Blood thinners", "High blood pressure"],
+        "remedies": ["Pinch nostrils for 10-15 minutes", "Lean forward (not back)", "Apply ice to bridge of nose", "Saline spray after bleeding stops", "Petroleum jelly inside nostrils"],
+        "exercises": ["None during active bleeding"],
+        "hydration": "Keep nasal passages moist with adequate hydration and humidified air.",
+        "nutrition": ["Vitamin K (leafy greens)", "Vitamin C for blood vessel health", "Iron if frequent bleeds"],
+        "prevention": ["Use humidifier", "Apply nasal saline gel", "Avoid nose picking", "Control blood pressure"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Mouth",
+    "icon": "👄",
+    "region": "head",
+    "symptoms": [
+      {
+        "name": "Mouth Ulcers",
+        "seriousness": "Mild",
+        "causes": ["Stress", "Vitamin deficiency", "Acidic foods", "Minor injury", "Hormonal changes"],
+        "remedies": ["Saltwater rinse", "Topical numbing gel", "Avoid spicy/acidic foods", "Vitamin B12 supplements", "Honey application"],
+        "exercises": ["Stress-reduction techniques"],
+        "hydration": "Stay hydrated and avoid acidic drinks that irritate ulcers.",
+        "nutrition": ["B vitamins", "Iron", "Zinc", "Yogurt with probiotics"],
+        "prevention": ["Manage stress", "Balanced diet", "Avoid trigger foods", "Good oral hygiene"],
+        "emergency": false
+      },
+      {
+        "name": "Bad Breath",
+        "seriousness": "Mild",
+        "causes": ["Poor oral hygiene", "Dry mouth", "Certain foods", "Gum disease", "Tonsil stones"],
+        "remedies": ["Brush and floss regularly", "Use mouthwash", "Stay hydrated", "Clean tongue", "Sugar-free gum"],
+        "exercises": ["None specific"],
+        "hydration": "Drink water to prevent dry mouth which causes bad breath.",
+        "nutrition": ["Crunchy fruits and vegetables", "Avoid strong-smelling foods", "Yogurt for probiotics"],
+        "prevention": ["Regular dental hygiene", "Stay hydrated", "Clean tongue", "Regular dental checkups"],
+        "emergency": false
+      },
+      {
+        "name": "Dry Mouth",
+        "seriousness": "Mild",
+        "causes": ["Dehydration", "Medications", "Mouth breathing", "Aging", "Stress"],
+        "remedies": ["Drink water frequently", "Chew sugar-free gum", "Use saliva substitutes", "Avoid alcohol and caffeine", "Breathe through nose"],
+        "exercises": ["None specific"],
+        "hydration": "Drink water throughout the day to combat dry mouth.",
+        "nutrition": ["Avoid caffeine and alcohol", "Suck on ice chips", "Eat moist foods"],
+        "prevention": ["Stay hydrated", "Avoid mouth breathing", "Review medications with doctor", "Use a humidifier"],
+        "emergency": false
+      },
+      {
+        "name": "Toothache",
+        "seriousness": "Moderate",
+        "causes": ["Cavities", "Gum disease", "Tooth abscess", "Cracked tooth", "Wisdom teeth"],
+        "remedies": ["Saltwater rinse", "Clove oil", "Over-the-counter pain relief", "Cold compress", "See dentist promptly"],
+        "exercises": ["Jaw relaxation exercises"],
+        "hydration": "Rinse mouth with water after eating. Avoid very hot or cold beverages.",
+        "nutrition": ["Calcium-rich foods", "Avoid sugary snacks", "Crunchy vegetables for natural cleaning"],
+        "prevention": ["Brush twice daily", "Floss daily", "Regular dental checkups", "Limit sugar intake", "Use fluoride toothpaste"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Neck",
+    "icon": "🦴",
+    "region": "neck",
+    "symptoms": [
+      {
+        "name": "Stiff Neck",
+        "seriousness": "Mild",
+        "causes": ["Sleeping awkwardly", "Sudden movement", "Prolonged poor posture", "Cold drafts", "Stress tension"],
+        "remedies": ["Gentle heat application", "Slow range-of-motion exercises", "Over-the-counter anti-inflammatory", "Self-massage", "Warm shower on neck"],
+        "exercises": ["Slow head turns", "Gentle side bends", "Levator scapulae stretch"],
+        "hydration": "Warm herbal teas can help relax tight neck muscles.",
+        "nutrition": ["Magnesium-rich foods", "Anti-inflammatory spices", "Avoid excess caffeine"],
+        "prevention": ["Supportive pillow", "Regular stretching", "Good posture habits", "Stress management"],
+        "emergency": false
+      },
+      {
+        "name": "Neck Tension",
+        "seriousness": "Mild",
+        "causes": ["Stress", "Poor posture", "Computer work", "Phone use", "Lack of movement"],
+        "remedies": ["Heat therapy", "Gentle stretching", "Massage", "Stress reduction", "Ergonomic adjustments"],
+        "exercises": ["Neck rolls", "Shoulder shrugs", "Chin tucks", "Scapular squeezes"],
+        "hydration": "Stay hydrated to reduce muscle tension and cramping.",
+        "nutrition": ["Magnesium-rich foods", "Anti-inflammatory foods", "B vitamins"],
+        "prevention": ["Take regular breaks", "Improve posture", "Manage stress", "Stretch regularly"],
+        "emergency": false
+      },
+      {
+        "name": "Neck Pain",
+        "seriousness": "Moderate",
+        "causes": ["Poor posture", "Muscle strain", "Cervical spondylosis", "Herniated disc", "Sleeping position"],
+        "remedies": ["Heat or cold therapy", "Gentle stretching", "Over-the-counter pain relief", "Ergonomic adjustments", "Massage"],
+        "exercises": ["Chin tucks", "Neck tilts (side to side)", "Shoulder rolls", "Neck rotation stretches"],
+        "hydration": "Proper hydration keeps spinal discs hydrated and maintains flexibility.",
+        "nutrition": ["Anti-inflammatory foods (turmeric, ginger)", "Calcium and vitamin D", "Omega-3 fatty acids"],
+        "prevention": ["Ergonomic workspace", "Regular posture breaks", "Proper pillow height", "Strengthen neck muscles", "Avoid cradling phone"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Shoulder",
+    "icon": "💪",
+    "region": "shoulder",
+    "symptoms": [
+      {
+        "name": "Shoulder Stiffness",
+        "seriousness": "Mild",
+        "causes": ["Prolonged sitting", "Poor posture", "Sleeping position", "Cold weather", "Lack of movement"],
+        "remedies": ["Gentle stretching", "Heat therapy", "Movement breaks", "Shoulder rolls", "Massage"],
+        "exercises": ["Shoulder rolls", "Arm circles", "Wall slides", "Doorway stretch"],
+        "hydration": "Stay hydrated to maintain joint flexibility.",
+        "nutrition": ["Anti-inflammatory foods", "Magnesium-rich foods", "Omega-3s"],
+        "prevention": ["Take regular breaks", "Maintain good posture", "Stretch regularly", "Stay active"],
+        "emergency": false
+      },
+      {
+        "name": "Shoulder Pain",
+        "seriousness": "Moderate",
+        "causes": ["Rotator cuff injury", "Frozen shoulder", "Bursitis", "Tendinitis", "Arthritis"],
+        "remedies": ["Rest and ice", "Physical therapy", "Anti-inflammatory medication", "Gentle stretching", "Corticosteroid injection (severe cases)"],
+        "exercises": ["Pendulum swings", "Wall crawls", "Cross-body stretch", "Internal/external rotation with band"],
+        "hydration": "Stay hydrated to maintain joint lubrication and reduce inflammation.",
+        "nutrition": ["Omega-3 fatty acids", "Turmeric", "Vitamin C for collagen repair", "Protein for muscle recovery"],
+        "prevention": ["Warm up before exercise", "Maintain shoulder flexibility", "Strengthen rotator cuff", "Avoid repetitive overhead motions"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Chest",
+    "icon": "❤️",
+    "region": "chest",
+    "symptoms": [
+      {
+        "name": "Heartburn",
+        "seriousness": "Moderate",
+        "causes": ["Acid reflux (GERD)", "Spicy or fatty foods", "Eating before bed", "Obesity", "Hiatal hernia"],
+        "remedies": ["Antacids", "Elevate head of bed", "Avoid lying down after eating", "Small frequent meals", "Baking soda in water (temporary)"],
+        "exercises": ["Light walking after meals", "Avoid crunches after eating"],
+        "hydration": "Drink water between meals rather than during. Avoid acidic juices.",
+        "nutrition": ["Avoid spicy, fatty, acidic foods", "Eat smaller meals", "Ginger tea", "Oatmeal", "Non-citrus fruits"],
+        "prevention": ["Don't eat 3 hours before bed", "Maintain healthy weight", "Avoid tight clothing", "Quit smoking", "Limit alcohol"],
+        "emergency": false
+      },
+      {
+        "name": "Chest Muscle Strain",
+        "seriousness": "Moderate",
+        "causes": ["Heavy lifting", "Intense exercise", "Coughing", "Poor posture", "Sudden movement"],
+        "remedies": ["Rest", "Ice and heat therapy", "Over-the-counter pain relief", "Gentle stretching", "Anti-inflammatory gel"],
+        "exercises": ["Gentle chest stretches", "Shoulder rolls", "Wall slides"],
+        "hydration": "Stay hydrated to support muscle recovery.",
+        "nutrition": ["Anti-inflammatory foods", "Protein for muscle repair", "Magnesium"],
+        "prevention": ["Warm up before exercise", "Proper lifting technique", "Gradual conditioning", "Good posture"],
+        "emergency": false
+      },
+      {
+        "name": "Chest Tightness",
+        "seriousness": "Serious",
+        "causes": ["Anxiety", "Asthma", "GERD", "Muscle strain", "Cardiac conditions"],
+        "remedies": ["Deep breathing exercises", "Sit upright", "Loosen tight clothing", "Antacids if GERD-related", "Seek medical attention if persistent"],
+        "exercises": ["Diaphragmatic breathing", "Chest opening stretches", "Light walking"],
+        "hydration": "Drink warm water to ease chest tension. Avoid carbonated beverages if GERD-related.",
+        "nutrition": ["Avoid trigger foods for GERD", "Anti-inflammatory diet", "Magnesium supplements"],
+        "prevention": ["Manage anxiety/stress", "Avoid smoking", "Regular cardiovascular exercise", "Maintain healthy weight"],
+        "emergency": true
+      }
+    ]
+  },
+  {
+    "bodyPart": "Abdomen",
+    "icon": "🫁",
+    "region": "abdomen",
+    "symptoms": [
+      {
+        "name": "Bloating",
+        "seriousness": "Mild",
+        "causes": ["Overeating", "Gas-producing foods", "Constipation", "IBS", "Food intolerance"],
+        "remedies": ["Peppermint tea", "Walk after meals", "Activated charcoal", "Simethicone", "Abdominal massage"],
+        "exercises": ["Cat-cow stretch", "Torso twist", "Walking", "Wind-relieving pose (yoga)"],
+        "hydration": "Drink warm water with lemon. Avoid drinking through straws (increases air swallowing).",
+        "nutrition": ["Limit beans, broccoli, cabbage initially", "Probiotics", "Fennel seeds", "Avoid artificial sweeteners"],
+        "prevention": ["Eat slowly and chew well", "Avoid carbonated drinks", "Regular exercise", "Identify food intolerances"],
+        "emergency": false
+      },
+      {
+        "name": "Gas",
+        "seriousness": "Mild",
+        "causes": ["Swallowed air", "High-fiber foods", "Carbonated drinks", "Food intolerance", "Bacterial overgrowth"],
+        "remedies": ["Walk around", "Peppermint tea", "Simethicone", "Gentle abdominal massage", "Avoid gas-producing foods temporarily"],
+        "exercises": ["Walking", "Knee-to-chest pose", "Gentle twists"],
+        "hydration": "Drink water to help move gas through digestive system.",
+        "nutrition": ["Identify trigger foods", "Eat slowly", "Probiotics", "Avoid artificial sweeteners"],
+        "prevention": ["Eat slowly", "Avoid carbonated drinks", "Identify food intolerances", "Regular exercise"],
+        "emergency": false
+      },
+      {
+        "name": "Indigestion",
+        "seriousness": "Mild",
+        "causes": ["Eating too fast", "Fatty or spicy foods", "Stress", "Caffeine", "Alcohol"],
+        "remedies": ["Eat smaller meals", "Avoid trigger foods", "Ginger tea", "Peppermint", "Chew food thoroughly"],
+        "exercises": ["Light walking after meals", "Avoid vigorous exercise after eating"],
+        "hydration": "Drink water between meals, not during meals.",
+        "nutrition": ["Avoid spicy/fatty foods", "Ginger", "Peppermint", "Smaller portions"],
+        "prevention": ["Eat slowly", "Manage stress", "Avoid trigger foods", "Don't eat before bed"],
+        "emergency": false
+      },
+      {
+        "name": "Stomach Pain",
+        "seriousness": "Moderate",
+        "causes": ["Indigestion", "Gas", "Gastritis", "Ulcer", "Food poisoning"],
+        "remedies": ["Bland diet (BRAT)", "Peppermint tea", "Heating pad on abdomen", "Over-the-counter antacids", "Rest"],
+        "exercises": ["Gentle abdominal massage", "Knee-to-chest stretches", "Walking"],
+        "hydration": "Sip clear fluids. Avoid dairy and carbonated drinks until symptoms subside.",
+        "nutrition": ["BRAT diet (bananas, rice, applesauce, toast)", "Ginger", "Probiotics", "Avoid greasy foods"],
+        "prevention": ["Eat slowly", "Avoid trigger foods", "Regular meal schedule", "Manage stress", "Food hygiene"],
+        "emergency": false
+      },
+      {
+        "name": "Nausea",
+        "seriousness": "Moderate",
+        "causes": ["Food poisoning", "Motion sickness", "Pregnancy", "Medication side effects", "Viral gastroenteritis"],
+        "remedies": ["Ginger tea or ginger ale", "Small sips of clear fluids", "Crackers or dry toast", "Fresh air", "Acupressure wristbands"],
+        "exercises": ["Deep breathing", "Avoid vigorous activity"],
+        "hydration": "Take small frequent sips of water or electrolyte drinks. Avoid gulping fluids.",
+        "nutrition": ["BRAT diet", "Ginger in any form", "Avoid greasy/spicy foods", "Peppermint"],
+        "prevention": ["Food safety practices", "Eat smaller meals", "Avoid strong odors", "Stay hydrated"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Back",
+    "icon": "🔙",
+    "region": "back",
+    "symptoms": [
+      {
+        "name": "Back Stiffness",
+        "seriousness": "Mild",
+        "causes": ["Prolonged sitting", "Poor posture", "Lack of movement", "Cold weather", "Stress"],
+        "remedies": ["Gentle stretching", "Heat therapy", "Movement breaks", "Massage", "Warm shower"],
+        "exercises": ["Cat-cow stretches", "Gentle twists", "Shoulder rolls", "Walking"],
+        "hydration": "Stay hydrated to keep spinal discs flexible.",
+        "nutrition": ["Anti-inflammatory foods", "Magnesium-rich foods", "Omega-3s"],
+        "prevention": ["Take regular breaks", "Maintain good posture", "Stay active", "Stretch regularly"],
+        "emergency": false
+      },
+      {
+        "name": "Muscle Tension",
+        "seriousness": "Mild",
+        "causes": ["Stress", "Poor posture", "Overuse", "Lack of sleep", "Dehydration"],
+        "remedies": ["Heat therapy", "Massage", "Stretching", "Stress management", "Epsom salt bath"],
+        "exercises": ["Gentle stretching", "Yoga", "Deep breathing", "Progressive muscle relaxation"],
+        "hydration": "Drink water to reduce muscle cramping and tension.",
+        "nutrition": ["Magnesium supplements", "Potassium-rich foods", "Anti-inflammatory diet"],
+        "prevention": ["Manage stress", "Good posture", "Regular stretching", "Stay hydrated"],
+        "emergency": false
+      },
+      {
+        "name": "Lower Back Pain",
+        "seriousness": "Moderate",
+        "causes": ["Muscle strain", "Poor posture", "Herniated disc", "Sciatica", "Sedentary lifestyle"],
+        "remedies": ["Hot/cold therapy", "Over-the-counter pain relief", "Gentle stretching", "Maintain activity (don't bed rest too long)", "Physical therapy"],
+        "exercises": ["Cat-cow stretches", "Pelvic tilts", "Bird-dog exercise", "Partial crunches", "Knee-to-chest stretch"],
+        "hydration": "Hydration keeps spinal discs plump and shock-absorbing.",
+        "nutrition": ["Anti-inflammatory foods", "Calcium and vitamin D", "Collagen supplements", "Omega-3 fatty acids"],
+        "prevention": ["Core strengthening", "Ergonomic chair", "Proper lifting technique", "Regular movement breaks", "Maintain healthy weight"],
+        "emergency": false
+      },
+      {
+        "name": "Upper Back Pain",
+        "seriousness": "Moderate",
+        "causes": ["Poor posture", "Muscle overuse", "Thoracic disc issues", "Osteoporosis", "Stress tension"],
+        "remedies": ["Posture correction", "Heat therapy", "Massage", "Anti-inflammatory medication", "Foam rolling"],
+        "exercises": ["Thoracic extension", "Doorway chest stretch", "Scapular squeezes", "Wall angels"],
+        "hydration": "Stay hydrated to reduce muscle cramping and tension.",
+        "nutrition": ["Magnesium supplements", "Anti-inflammatory diet", "B vitamins for nerve health"],
+        "prevention": ["Ergonomic workspace", "Regular stretching", "Strengthen upper back", "Take breaks from sitting"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Arm",
+    "icon": "💪",
+    "region": "arm",
+    "symptoms": [
+      {
+        "name": "Arm Fatigue",
+        "seriousness": "Mild",
+        "causes": ["Overuse", "Poor posture", "Lack of conditioning", "Repetitive motions", "Stress"],
+        "remedies": ["Rest", "Gentle stretching", "Massage", "Heat therapy", "Ergonomic adjustments"],
+        "exercises": ["Gentle arm circles", "Shoulder rolls", "Wrist stretches", "Finger stretches"],
+        "hydration": "Stay hydrated to reduce muscle fatigue.",
+        "nutrition": ["Magnesium-rich foods", "Potassium", "Anti-inflammatory foods"],
+        "prevention": ["Take regular breaks", "Maintain good posture", "Stretch regularly", "Gradual conditioning"],
+        "emergency": false
+      },
+      {
+        "name": "Arm Pain",
+        "seriousness": "Moderate",
+        "causes": ["Muscle strain", "Tendinitis", "Nerve compression", "Fracture", "Overuse injury"],
+        "remedies": ["RICE (Rest, Ice, Compression, Elevation)", "Over-the-counter pain relief", "Gentle stretching", "Splinting if needed", "Physical therapy"],
+        "exercises": ["Wrist curls", "Bicep curls (light weight)", "Tricep stretches", "Forearm rotation"],
+        "hydration": "Proper hydration reduces muscle cramps and supports recovery.",
+        "nutrition": ["Protein for muscle repair", "Potassium (bananas)", "Calcium", "Anti-inflammatory foods"],
+        "prevention": ["Warm up before activity", "Gradual increase in intensity", "Proper form during exercise", "Regular rest days"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Elbow",
+    "icon": "🦾",
+    "region": "arm",
+    "symptoms": [
+      {
+        "name": "Elbow Stiffness",
+        "seriousness": "Mild",
+        "causes": ["Prolonged sitting", "Poor posture", "Lack of movement", "Cold weather", "Previous injury"],
+        "remedies": ["Gentle stretching", "Heat therapy", "Movement breaks", "Massage", "Warm shower"],
+        "exercises": ["Elbow bends", "Wrist rotations", "Forearm stretches", "Gentle arm circles"],
+        "hydration": "Stay hydrated to maintain joint flexibility.",
+        "nutrition": ["Anti-inflammatory foods", "Magnesium-rich foods", "Omega-3s"],
+        "prevention": ["Take regular breaks", "Maintain good posture", "Stretch regularly", "Stay active"],
+        "emergency": false
+      },
+      {
+        "name": "Tennis Elbow",
+        "seriousness": "Moderate",
+        "causes": ["Overuse of forearm muscles", "Repetitive motions", "Improper technique", "Age-related degeneration", "Gripping activities"],
+        "remedies": ["Rest from aggravating activities", "Ice 15-20 min several times daily", "Elbow brace/strap", "Anti-inflammatory medication", "Physical therapy"],
+        "exercises": ["Wrist extension stretch", "Forearm pronation/supination", "Eccentric wrist curls", "Grip strengthening (gradually)"],
+        "hydration": "Maintain hydration for optimal tendon health and elasticity.",
+        "nutrition": ["Collagen supplements", "Vitamin C for tendon repair", "Anti-inflammatory foods", "Protein"],
+        "prevention": ["Proper technique in sports", "Strengthen forearm muscles", "Use ergonomic tools", "Take regular breaks from repetitive tasks"],
+        "emergency": false
+      },
+      {
+        "name": "Elbow Pain",
+        "seriousness": "Moderate",
+        "causes": ["Overuse", "Muscle strain", "Bursitis", "Arthritis", "Nerve entrapment"],
+        "remedies": ["Rest", "Ice application", "Compression wrap", "Anti-inflammatory medication", "Elbow pad"],
+        "exercises": ["Gentle range-of-motion exercises", "Isometric strengthening", "Forearm stretches"],
+        "hydration": "Adequate fluid intake supports joint cushioning and reduces inflammation.",
+        "nutrition": ["Omega-3 fatty acids", "Turmeric", "Glucosamine supplements"],
+        "prevention": ["Stretching before activity", "Avoid repetitive strain", "Ergonomic workspace setup", "Gradual conditioning"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Wrist",
+    "icon": "⌚",
+    "region": "arm",
+    "symptoms": [
+      {
+        "name": "Wrist Fatigue",
+        "seriousness": "Mild",
+        "causes": ["Overuse", "Repetitive typing", "Poor ergonomics", "Lack of breaks", "Gripping activities"],
+        "remedies": ["Rest", "Gentle stretching", "Massage", "Heat therapy", "Ergonomic adjustments"],
+        "exercises": ["Wrist circles", "Finger stretches", "Forearm stretches", "Wrist flexion/extension"],
+        "hydration": "Stay hydrated to reduce muscle fatigue.",
+        "nutrition": ["Magnesium-rich foods", "Potassium", "Anti-inflammatory foods"],
+        "prevention": ["Take regular breaks", "Maintain good ergonomics", "Stretch regularly", "Use proper technique"],
+        "emergency": false
+      },
+      {
+        "name": "Wrist Stiffness",
+        "seriousness": "Mild",
+        "causes": ["Prolonged typing", "Poor posture", "Lack of movement", "Cold weather", "Previous injury"],
+        "remedies": ["Gentle stretching", "Heat therapy", "Movement breaks", "Massage", "Warm shower"],
+        "exercises": ["Wrist circles", "Wrist flexion/extension", "Finger stretches", "Forearm stretches"],
+        "hydration": "Stay hydrated to maintain joint flexibility.",
+        "nutrition": ["Anti-inflammatory foods", "Magnesium-rich foods", "Omega-3s"],
+        "prevention": ["Take regular breaks", "Maintain good posture", "Stretch regularly", "Stay active"],
+        "emergency": false
+      },
+      {
+        "name": "Carpal Tunnel Syndrome",
+        "seriousness": "Moderate",
+        "causes": ["Repetitive hand movements", "Typing", "Pregnancy", "Diabetes", "Rheumatoid arthritis"],
+        "remedies": ["Wrist splint (especially at night)", "Ice application", "Anti-inflammatory medication", "Ergonomic keyboard/mouse", "Corticosteroid injection"],
+        "exercises": ["Wrist flexor stretch", "Nerve gliding exercises", "Tendon gliding exercises", "Wrist circles"],
+        "hydration": "Stay hydrated to reduce inflammation in the carpal tunnel.",
+        "nutrition": ["B6 supplements", "Anti-inflammatory foods", "Omega-3 fatty acids"],
+        "prevention": ["Ergonomic workstation", "Regular breaks from typing", "Wrist stretches", "Proper keyboard height", "Avoid excessive force"],
+        "emergency": false
+      },
+      {
+        "name": "Wrist Sprain",
+        "seriousness": "Moderate",
+        "causes": ["Falling on outstretched hand", "Sports injury", "Sudden twisting", "Repetitive stress"],
+        "remedies": ["RICE protocol", "Wrist brace", "Anti-inflammatory medication", "Gentle range-of-motion after initial rest", "Physical therapy"],
+        "exercises": ["Gentle wrist flexion/extension", "Grip exercises (after healing)", "Resistance band exercises"],
+        "hydration": "Proper hydration supports tissue healing and reduces swelling.",
+        "nutrition": ["Vitamin C for ligament repair", "Protein", "Zinc", "Collagen"],
+        "prevention": ["Wrist guards during sports", "Strengthen wrist muscles", "Improve balance to prevent falls"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Hand",
+    "icon": "🤚",
+    "region": "arm",
+    "symptoms": [
+      {
+        "name": "Hand Fatigue",
+        "seriousness": "Mild",
+        "causes": ["Overuse", "Repetitive gripping", "Poor ergonomics", "Lack of breaks", "Stress"],
+        "remedies": ["Rest", "Gentle stretching", "Massage", "Heat therapy", "Ergonomic adjustments"],
+        "exercises": ["Finger stretches", "Hand squeezes", "Wrist rotations", "Finger spreads"],
+        "hydration": "Stay hydrated to reduce muscle fatigue.",
+        "nutrition": ["Magnesium-rich foods", "Potassium", "Anti-inflammatory foods"],
+        "prevention": ["Take regular breaks", "Maintain good ergonomics", "Stretch regularly", "Use proper technique"],
+        "emergency": false
+      },
+      {
+        "name": "Hand Stiffness",
+        "seriousness": "Mild",
+        "causes": ["Prolonged gripping", "Poor posture", "Lack of movement", "Cold weather", "Arthritis"],
+        "remedies": ["Gentle stretching", "Heat therapy", "Movement breaks", "Massage", "Warm water soak"],
+        "exercises": ["Finger bends", "Fist making and releasing", "Finger spreads", "Thumb stretches"],
+        "hydration": "Stay hydrated to maintain joint flexibility.",
+        "nutrition": ["Anti-inflammatory foods", "Magnesium-rich foods", "Omega-3s"],
+        "prevention": ["Take regular breaks", "Maintain good posture", "Stretch regularly", "Stay active"],
+        "emergency": false
+      },
+      {
+        "name": "Hand Numbness",
+        "seriousness": "Moderate",
+        "causes": ["Carpal tunnel", "Peripheral neuropathy", "Diabetes", "Vitamin B12 deficiency", "Cervical nerve compression"],
+        "remedies": ["Wrist splint", "Shake hands gently", "Warm water soak", "B12 supplements if deficient", "Consult neurologist if persistent"],
+        "exercises": ["Finger spreads", "Hand squeezes", "Nerve gliding exercises"],
+        "hydration": "Good circulation from hydration helps reduce nerve compression symptoms.",
+        "nutrition": ["Vitamin B12", "B6", "Folate", "Omega-3 fatty acids"],
+        "prevention": ["Ergonomic workspace", "Regular hand breaks", "Manage diabetes", "Avoid prolonged pressure on nerves"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Fingers",
+    "icon": "🖐️",
+    "region": "arm",
+    "symptoms": [
+      {
+        "name": "Joint Stiffness",
+        "seriousness": "Mild",
+        "causes": ["Arthritis", "Overuse", "Cold weather", "Inactivity", "Injury"],
+        "remedies": ["Warm water soak", "Gentle range-of-motion exercises", "Paraffin wax dips", "Anti-inflammatory gel", "Hand therapy putty"],
+        "exercises": ["Finger bends", "Fist making and releasing", "Finger walking on table", "Thumb opposition exercises"],
+        "hydration": "Warm fluids help relax stiff joints. Stay consistently hydrated.",
+        "nutrition": ["Turmeric", "Ginger", "Omega-3s", "Avoid excessive sugar"],
+        "prevention": ["Keep hands warm", "Regular finger exercises", "Maintain active lifestyle", "Anti-inflammatory diet"],
+        "emergency": false
+      },
+      {
+        "name": "Finger Fatigue",
+        "seriousness": "Mild",
+        "causes": ["Overuse", "Repetitive typing", "Poor ergonomics", "Lack of breaks", "Gripping activities"],
+        "remedies": ["Rest", "Gentle stretching", "Massage", "Heat therapy", "Ergonomic adjustments"],
+        "exercises": ["Finger stretches", "Finger spreads", "Hand squeezes", "Thumb stretches"],
+        "hydration": "Stay hydrated to reduce muscle fatigue.",
+        "nutrition": ["Magnesium-rich foods", "Potassium", "Anti-inflammatory foods"],
+        "prevention": ["Take regular breaks", "Maintain good ergonomics", "Stretch regularly", "Use proper technique"],
+        "emergency": false
+      },
+      {
+        "name": "Trigger Finger",
+        "seriousness": "Moderate",
+        "causes": ["Repetitive gripping", "Rheumatoid arthritis", "Diabetes", "Forceful hand use", "Age"],
+        "remedies": ["Rest from gripping activities", "Finger splint", "Anti-inflammatory medication", "Gentle stretching", "Corticosteroid injection"],
+        "exercises": ["Finger extension exercises", "Rubber band finger spreads", "Tendon gliding exercises"],
+        "hydration": "Maintain hydration for tendon health and flexibility.",
+        "nutrition": ["Anti-inflammatory foods", "Collagen supplements", "Vitamin C"],
+        "prevention": ["Avoid prolonged gripping", "Use padded handles on tools", "Regular hand stretches", "Ergonomic tool design"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Hip",
+    "icon": "🦴",
+    "region": "hip",
+    "symptoms": [
+      {
+        "name": "Hip Stiffness",
+        "seriousness": "Mild",
+        "causes": ["Prolonged sitting", "Poor posture", "Lack of movement", "Cold weather", "Previous injury"],
+        "remedies": ["Gentle stretching", "Heat therapy", "Movement breaks", "Massage", "Warm shower"],
+        "exercises": ["Hip circles", "Leg swings", "Hip flexor stretches", "Glute bridges"],
+        "hydration": "Stay hydrated to maintain joint flexibility.",
+        "nutrition": ["Anti-inflammatory foods", "Magnesium-rich foods", "Omega-3s"],
+        "prevention": ["Take regular breaks", "Maintain good posture", "Stretch regularly", "Stay active"],
+        "emergency": false
+      },
+      {
+        "name": "Hip Tightness",
+        "seriousness": "Mild",
+        "causes": ["Sedentary lifestyle", "Tight hip flexors", "Poor posture", "Lack of stretching", "Running without proper warm-up"],
+        "remedies": ["Hip flexor stretches", "Foam rolling", "Heat therapy", "Regular movement", "Yoga"],
+        "exercises": ["Lunges", "Hip flexor stretch", "Figure-4 stretch", "Pigeon pose"],
+        "hydration": "Stay hydrated to keep muscles flexible.",
+        "nutrition": ["Magnesium-rich foods", "Anti-inflammatory foods", "Potassium"],
+        "prevention": ["Regular stretching", "Take breaks from sitting", "Warm up before exercise", "Strengthen glutes"],
+        "emergency": false
+      },
+      {
+        "name": "Hip Pain",
+        "seriousness": "Moderate",
+        "causes": ["Arthritis", "Bursitis", "Hip labral tear", "Sciatica", "Muscle strain"],
+        "remedies": ["Rest", "Ice and heat therapy", "Anti-inflammatory medication", "Physical therapy", "Hip-supporting pillow while sleeping"],
+        "exercises": ["Hip flexor stretch", "Clamshells", "Hip bridges", "Figure-4 stretch", "Side-lying leg lifts"],
+        "hydration": "Joint hydration is critical — water helps maintain synovial fluid in hip joint.",
+        "nutrition": ["Glucosamine and chondroitin", "Anti-inflammatory diet", "Calcium and vitamin D", "Collagen"],
+        "prevention": ["Maintain healthy weight", "Regular hip-strengthening exercises", "Proper footwear", "Avoid prolonged sitting"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Thigh",
+    "icon": "🦵",
+    "region": "leg",
+    "symptoms": [
+      {
+        "name": "Muscle Cramp",
+        "seriousness": "Mild",
+        "causes": ["Dehydration", "Electrolyte imbalance", "Overexertion", "Poor circulation", "Prolonged sitting"],
+        "remedies": ["Stretch the affected muscle", "Massage", "Apply heat", "Drink electrolyte solution", "Walk it out"],
+        "exercises": ["Hamstring stretches", "Quad stretches", "Foam rolling", "Light cycling"],
+        "hydration": "Electrolyte-rich drinks are essential. Dehydration is the #1 cause of muscle cramps.",
+        "nutrition": ["Potassium (bananas, potatoes)", "Magnesium (nuts, seeds)", "Calcium", "Sodium (in moderation)"],
+        "prevention": ["Stay hydrated", "Stretch before and after exercise", "Gradual warm-up", "Balanced electrolytes"],
+        "emergency": false
+      },
+      {
+        "name": "Thigh Fatigue",
+        "seriousness": "Mild",
+        "causes": ["Overuse", "Poor conditioning", "Dehydration", "Electrolyte imbalance", "Lack of rest"],
+        "remedies": ["Rest", "Gentle stretching", "Massage", "Heat therapy", "Stay hydrated"],
+        "exercises": ["Gentle stretching", "Light walking", "Foam rolling", "Yoga"],
+        "hydration": "Stay hydrated to reduce muscle fatigue.",
+        "nutrition": ["Magnesium-rich foods", "Potassium", "Protein for recovery", "Anti-inflammatory foods"],
+        "prevention": ["Gradual conditioning", "Proper warm-up", "Stay hydrated", "Regular rest days"],
+        "emergency": false
+      },
+      {
+        "name": "Hamstring Strain",
+        "seriousness": "Moderate",
+        "causes": ["Sudden sprinting", "Inadequate warm-up", "Muscle fatigue", "Muscle imbalance", "Previous injury"],
+        "remedies": ["RICE protocol", "Gentle stretching after 48 hours", "Anti-inflammatory medication", "Compression wrap", "Physical therapy"],
+        "exercises": ["Gentle hamstring stretches (after acute phase)", "Nordic hamstring curls", "Hip bridges", "Single-leg deadlifts (gradual)"],
+        "hydration": "Stay hydrated during recovery to support muscle repair.",
+        "nutrition": ["Protein for muscle repair", "Tart cherry juice (anti-inflammatory)", "Omega-3s", "Vitamin C"],
+        "prevention": ["Proper warm-up", "Regular hamstring strengthening", "Don't overdo sprinting", "Balance quad and hamstring strength"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Knee",
+    "icon": "🦿",
+    "region": "leg",
+    "symptoms": [
+      {
+        "name": "Knee Stiffness",
+        "seriousness": "Mild",
+        "causes": ["Prolonged sitting", "Poor posture", "Lack of movement", "Cold weather", "Previous injury"],
+        "remedies": ["Gentle stretching", "Heat therapy", "Movement breaks", "Massage", "Warm shower"],
+        "exercises": ["Knee circles", "Leg swings", "Quad stretches", "Hamstring stretches"],
+        "hydration": "Stay hydrated to maintain joint flexibility.",
+        "nutrition": ["Anti-inflammatory foods", "Magnesium-rich foods", "Omega-3s"],
+        "prevention": ["Take regular breaks", "Maintain good posture", "Stretch regularly", "Stay active"],
+        "emergency": false
+      },
+      {
+        "name": "Knee Pain",
+        "seriousness": "Moderate",
+        "causes": ["Runner's knee", "Osteoarthritis", "Meniscus tear", "Ligament injury", "Bursitis"],
+        "remedies": ["RICE protocol", "Knee brace", "Anti-inflammatory medication", "Physical therapy", "Low-impact exercises"],
+        "exercises": ["Straight leg raises", "Wall squats", "Step-ups", "Hamstring curls", "Quad sets"],
+        "hydration": "Hydration supports cartilage health and reduces joint inflammation.",
+        "nutrition": ["Glucosamine supplements", "Anti-inflammatory foods", "Vitamin D and calcium", "Collagen peptides"],
+        "prevention": ["Maintain healthy weight", "Strengthen quadriceps and hamstrings", "Proper footwear", "Avoid high-impact on hard surfaces", "Warm up properly"],
+        "emergency": false
+      },
+      {
+        "name": "Knee Swelling",
+        "seriousness": "Serious",
+        "causes": ["Injury", "Arthritis", "Infection", "Gout", "Baker's cyst"],
+        "remedies": ["RICE protocol", "Elevation above heart level", "Compression bandage", "Anti-inflammatory medication", "Joint aspiration if severe"],
+        "exercises": ["Gentle range-of-motion", "Ankle pumps", "Quad sets (if tolerated)"],
+        "hydration": "Reduce sodium intake and increase water to help manage swelling.",
+        "nutrition": ["Anti-inflammatory diet", "Tart cherry juice", "Turmeric", "Avoid excess salt"],
+        "prevention": ["Proper warm-up", "Strengthen surrounding muscles", "Wear proper footwear", "Address injuries promptly"],
+        "emergency": true
+      }
+    ]
+  },
+  {
+    "bodyPart": "Leg",
+    "icon": "🦵",
+    "region": "leg",
+    "symptoms": [
+      {
+        "name": "Leg Fatigue",
+        "seriousness": "Mild",
+        "causes": ["Overuse", "Poor conditioning", "Dehydration", "Electrolyte imbalance", "Lack of rest"],
+        "remedies": ["Rest", "Gentle stretching", "Massage", "Heat therapy", "Elevation"],
+        "exercises": ["Gentle stretching", "Light walking", "Foam rolling", "Yoga"],
+        "hydration": "Stay hydrated to reduce muscle fatigue.",
+        "nutrition": ["Magnesium-rich foods", "Potassium", "Protein for recovery", "Anti-inflammatory foods"],
+        "prevention": ["Gradual conditioning", "Proper warm-up", "Stay hydrated", "Regular rest days"],
+        "emergency": false
+      },
+      {
+        "name": "Shin Splints",
+        "seriousness": "Moderate",
+        "causes": ["Running on hard surfaces", "Sudden increase in activity", "Flat feet", "Improper footwear", "Weak ankle stabilizers"],
+        "remedies": ["Rest from impact activities", "Ice for 15-20 minutes", "Compression", "Anti-inflammatory medication", "Proper running shoes"],
+        "exercises": ["Toe raises", "Heel walks", "Ankle circles", "Calf stretches"],
+        "hydration": "Maintain good hydration to support muscle function during recovery.",
+        "nutrition": ["Calcium and vitamin D", "Anti-inflammatory foods", "Protein for tissue repair"],
+        "prevention": ["Gradually increase running mileage", "Proper footwear", "Run on softer surfaces", "Strengthen shin muscles", "Cross-train"],
+        "emergency": false
+      },
+      {
+        "name": "Leg Swelling",
+        "seriousness": "Serious",
+        "causes": ["Prolonged standing", "Deep vein thrombosis", "Heart failure", "Kidney disease", "Lymphedema"],
+        "remedies": ["Elevate legs above heart", "Compression stockings", "Reduce salt intake", "Gentle walking", "Consult doctor promptly"],
+        "exercises": ["Ankle pumps", "Calf raises", "Gentle walking", "Swimming"],
+        "hydration": "Paradoxically, drinking more water helps reduce fluid retention.",
+        "nutrition": ["Reduce sodium", "Potassium-rich foods", "Adequate protein", "Avoid processed foods"],
+        "prevention": ["Regular movement", "Avoid prolonged sitting/standing", "Elevate legs when resting", "Compression stockings if at risk"],
+        "emergency": true
+      }
+    ]
+  },
+  {
+    "bodyPart": "Ankle",
+    "icon": "🦶",
+    "region": "leg",
+    "symptoms": [
+      {
+        "name": "Ankle Stiffness",
+        "seriousness": "Mild",
+        "causes": ["Previous injury", "Arthritis", "Inactivity", "Prolonged immobilization", "Tight calf muscles"],
+        "remedies": ["Warm water soak", "Gentle stretching", "Ankle circles", "Massage", "Anti-inflammatory gel"],
+        "exercises": ["Ankle dorsiflexion stretches", "Calf raises", "Towel stretches", "Resistance band exercises"],
+        "hydration": "Warm fluids before stretching can help improve joint mobility.",
+        "nutrition": ["Omega-3 fatty acids", "Turmeric", "Glucosamine"],
+        "prevention": ["Daily ankle mobility exercises", "Maintain calf flexibility", "Stay active", "Proper footwear"],
+        "emergency": false
+      },
+      {
+        "name": "Ankle Fatigue",
+        "seriousness": "Mild",
+        "causes": ["Overuse", "Poor conditioning", "Dehydration", "Electrolyte imbalance", "Lack of rest"],
+        "remedies": ["Rest", "Gentle stretching", "Massage", "Heat therapy", "Elevation"],
+        "exercises": ["Gentle stretching", "Light walking", "Foam rolling", "Yoga"],
+        "hydration": "Stay hydrated to reduce muscle fatigue.",
+        "nutrition": ["Magnesium-rich foods", "Potassium", "Protein for recovery", "Anti-inflammatory foods"],
+        "prevention": ["Gradual conditioning", "Proper warm-up", "Stay hydrated", "Regular rest days"],
+        "emergency": false
+      },
+      {
+        "name": "Ankle Sprain",
+        "seriousness": "Moderate",
+        "causes": ["Twisting injury", "Uneven surfaces", "Sports", "Weak ankle muscles", "Previous sprains"],
+        "remedies": ["RICE protocol", "Ankle brace or wrap", "Anti-inflammatory medication", "Crutches if needed", "Physical therapy"],
+        "exercises": ["Alphabet ankle exercises", "Resistance band strengthening", "Balance board training", "Single-leg stance"],
+        "hydration": "Adequate hydration supports tissue healing and reduces swelling.",
+        "nutrition": ["Vitamin C for ligament repair", "Protein", "Bromelain (from pineapple)", "Collagen supplements"],
+        "prevention": ["Ankle-strengthening exercises", "Proper footwear", "Balance training", "Taping during high-risk activities", "Warm up properly"],
+        "emergency": false
+      }
+    ]
+  },
+  {
+    "bodyPart": "Foot",
+    "icon": "🦶",
+    "region": "foot",
+    "symptoms": [
+      {
+        "name": "Foot Fatigue",
+        "seriousness": "Mild",
+        "causes": ["Overuse", "Poor footwear", "Prolonged standing", "Lack of arch support", "Dehydration"],
+        "remedies": ["Rest", "Foot massage", "Elevation", "Warm water soak", "Proper footwear"],
+        "exercises": ["Toe stretches", "Ankle rotations", "Foot rolling", "Calf stretches"],
+        "hydration": "Stay hydrated to reduce muscle fatigue.",
+        "nutrition": ["Magnesium-rich foods", "Potassium", "Anti-inflammatory foods"],
+        "prevention": ["Wear supportive shoes", "Take breaks from standing", "Stretch regularly", "Maintain healthy weight"],
+        "emergency": false
+      },
+      {
+        "name": "Heel Pain",
+        "seriousness": "Mild",
+        "causes": ["Plantar fasciitis", "Heel spurs", "Poor footwear", "Overuse", "Obesity"],
+        "remedies": ["Rest", "Ice", "Stretching", "Proper footwear", "Orthotics"],
+        "exercises": ["Calf stretches", "Plantar fascia stretch", "Foot rolling", "Toe curls"],
+        "hydration": "Stay hydrated to maintain tissue health.",
+        "nutrition": ["Anti-inflammatory foods", "Vitamin C", "Collagen"],
+        "prevention": ["Wear supportive shoes", "Stretch regularly", "Maintain healthy weight", "Avoid walking barefoot"],
+        "emergency": false
+      },
+      {
+        "name": "Plantar Fasciitis",
+        "seriousness": "Moderate",
+        "causes": ["Overuse", "Flat feet or high arches", "Tight calf muscles", "Obesity", "Standing for long periods"],
+        "remedies": ["Rolling foot on frozen water bottle", "Arch support insoles", "Night splint", "Calf stretches", "Anti-inflammatory medication"],
+        "exercises": ["Towel curls with toes", "Calf raises", "Plantar fascia stretch", "Marble pickup with toes"],
+        "hydration": "Stay hydrated to maintain tissue elasticity in the plantar fascia.",
+        "nutrition": ["Anti-inflammatory diet", "Vitamin C", "Collagen supplements", "Maintain healthy weight"],
+        "prevention": ["Supportive footwear", "Avoid walking barefoot on hard surfaces", "Maintain healthy weight", "Stretch calves regularly", "Replace worn shoes"],
+        "emergency": false
+      },
+      {
+        "name": "Foot Numbness",
+        "seriousness": "Serious",
+        "causes": ["Peripheral neuropathy", "Diabetes", "Tight shoes", "Pinched nerve", "Poor circulation"],
+        "remedies": ["Check blood sugar levels", "Wear properly fitting shoes", "Foot massage", "Warm foot soak", "Consult doctor for neuropathy evaluation"],
+        "exercises": ["Toe spreads", "Ankle rotations", "Walking barefoot on varied textures"],
+        "hydration": "Good blood flow from proper hydration helps with nerve function.",
+        "nutrition": ["B vitamins (especially B12)", "Alpha-lipoic acid", "Avoid excess alcohol", "Control blood sugar"],
+        "prevention": ["Manage diabetes carefully", "Daily foot inspection", "Proper footwear", "Regular exercise for circulation", "Quit smoking"],
+        "emergency": true
+      }
+    ]
+  }
+]
