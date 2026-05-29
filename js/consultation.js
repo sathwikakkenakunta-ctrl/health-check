@@ -26,8 +26,14 @@
         var specialty = card.getAttribute('data-specialty');
         
         if (filter === 'all' || specialty === filter) {
-          card.style.display = 'block';
-          card.style.animation = 'fadeInUp 0.5s ease forwards';
+          card.style.display = '';
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(8px)';
+          requestAnimationFrame(function () {
+            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          });
         } else {
           card.style.display = 'none';
         }
@@ -109,17 +115,14 @@
 
       // Show notification about symptom-based search
       var notification = document.createElement('div');
-      notification.className = 'symptom-notification glass-panel';
-      notification.style.cssText = 'position: fixed; top: 80px; left: 50%; transform: translateX(-50%); z-index: 1000; padding: 16px 24px; border-radius: 12px; display: flex; align-items: center; gap: 12px; animation: slideDown 0.5s ease;';
-      notification.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-cyan);"><path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a2 2 0 0 1 4 0v2"/></svg><span>Searching for hospitals specializing in <strong>' + selectedSymptom + '</strong> (' + selectedBodyPart + ')</span>';
+      notification.style.cssText = 'position: fixed; top: 80px; left: 50%; transform: translateX(-50%); z-index: 1000; padding: 12px 20px; border-radius: 12px; display: flex; align-items: center; gap: 10px; background: var(--bg-card); border: 1px solid var(--border); box-shadow: var(--shadow-card-hover); font-size: 0.875rem; color: var(--text-primary); opacity: 0; transition: opacity 0.3s ease;';
+      notification.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:var(--accent);flex-shrink:0"><path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a2 2 0 0 1 4 0v2"/></svg><span>Searching hospitals for <strong>' + selectedSymptom + '</strong> (' + selectedBodyPart + ')</span>';
       document.body.appendChild(notification);
+      requestAnimationFrame(function () { notification.style.opacity = '1'; });
 
-      // Auto-remove notification after 5 seconds
       setTimeout(function () {
-        notification.style.animation = 'slideUp 0.5s ease forwards';
-        setTimeout(function () {
-          notification.remove();
-        }, 500);
+        notification.style.opacity = '0';
+        setTimeout(function () { notification.remove(); }, 300);
       }, 5000);
 
       // Scroll to hospital finder
@@ -228,43 +231,45 @@
     hospitalList.innerHTML = '';
     hospitalList.appendChild(hospitalLoading);
 
-    // Geocode the location
+    var cachedLocation = null;
+
     geocodeLocation(location)
       .then(function (locationData) {
         if (!locationData) {
           hospitalLoading.style.display = 'none';
           hospitalList.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">Location not found. Please try again.</p>';
-          return;
+          return Promise.resolve(null);
         }
 
-        // Update map center
+        cachedLocation = locationData;
+
         if (map) {
           map.setView([locationData.lat, locationData.lng], 13);
         }
 
-        // Add user location marker
-        if (userLocationMarker) {
+        if (userLocationMarker && map) {
           map.removeLayer(userLocationMarker);
         }
-        userLocationMarker = L.marker([locationData.lat, locationData.lng], {
-          icon: L.divIcon({
-            className: 'custom-marker',
-            html: '<div style="background: var(--accent-cyan); width: 16px; height: 16px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 10px var(--accent-cyan);"></div>',
-            iconSize: [16, 16],
-            iconAnchor: [8, 8]
-          })
-        }).addTo(map);
-        userLocationMarker.bindPopup('Your Location').openPopup();
+        if (map) {
+          userLocationMarker = L.marker([locationData.lat, locationData.lng], {
+            icon: L.divIcon({
+              className: 'custom-marker',
+              html: '<div style="background: var(--accent); width: 14px; height: 14px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 8px rgba(16,185,129,0.4);"></div>',
+              iconSize: [14, 14],
+              iconAnchor: [7, 7]
+            })
+          }).addTo(map);
+          userLocationMarker.bindPopup('Your Location').openPopup();
+        }
 
-        // Search for nearby hospitals
         return searchNearbyHospitals(locationData.lat, locationData.lng);
       })
       .then(function (hospitals) {
         hospitalLoading.style.display = 'none';
-        
-        if (hospitals && hospitals.length > 0) {
-          displayHospitals(hospitals, locationData);
-        } else {
+
+        if (hospitals && hospitals.length > 0 && cachedLocation) {
+          displayHospitals(hospitals, cachedLocation);
+        } else if (hospitals !== null) {
           hospitalList.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">No hospitals found in this area. Try a different location.</p>';
         }
       })
@@ -304,7 +309,7 @@
       var marker = L.marker([hospital.lat, hospital.lon], {
         icon: L.divIcon({
           className: 'custom-marker',
-          html: '<div style="background: var(--accent-purple); width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 10px var(--accent-purple);"></div>',
+          html: '<div style="background: #EF4444; width: 16px; height: 16px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 8px rgba(239,68,68,0.3);"></div>',
           iconSize: [20, 20],
           iconAnchor: [10, 10]
         })
@@ -319,18 +324,12 @@
       var distance = calculateDistance(userLocation.lat, userLocation.lng, hospital.lat, hospital.lon);
       var distanceMiles = distance.toFixed(1);
 
-      // Add to list
       listHTML += '<div class="hospital-item" data-index="' + index + '">';
-      listHTML += '<div class="hospital-item-icon">';
-      listHTML += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">';
-      listHTML += '<path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a2 2 0 0 1 4 0v2"/>';
-      listHTML += '</svg>';
-      listHTML += '</div>';
-      listHTML += '<div class="hospital-item-info">';
+      listHTML += '<div class="hospital-info">';
       listHTML += '<h4>' + hospital.name + '</h4>';
       listHTML += '<p>' + distanceMiles + ' miles away</p>';
       listHTML += '</div>';
-      listHTML += '<button class="btn btn-secondary btn-sm get-directions-btn" data-lat="' + hospital.lat + '" data-lng="' + hospital.lon + '">Get Directions</button>';
+      listHTML += '<button class="btn btn-secondary btn-sm get-directions-btn" data-lat="' + hospital.lat + '" data-lng="' + hospital.lon + '">Directions</button>';
       listHTML += '</div>';
     });
 

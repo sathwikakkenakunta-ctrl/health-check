@@ -3,52 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="BodyWise — Intelligent Human Body Symptom Navigator. Understand your body better with AI-powered symptom detection and guided health insights." />
-  <title>BodyWise — Intelligent Human Body Symptom Navigator</title>
-
-  <!-- Fonts -->
+  <meta name="description" content="BodyCheck — Understand your body better with intelligent symptom detection and guided health insights." />
+  <title>BodyCheck — Smart Health Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <!-- Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/responsive.css" />
-
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
 
-  <!-- Skip Link for Accessibility -->
-  <a href="#hero" class="skip-link">Skip to main content</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- Floating Neon Orbs -->
-  <div class="neon-orb o1"></div>
-  <div class="neon-orb o2"></div>
-  <div class="neon-orb o3"></div>
-
-  <!-- Cursor Glow -->
-  <div class="cursor-glow" id="cursorGlow"></div>
-
-  <!-- Loading Screen -->
-  <div class="loading-screen" id="loadingScreen">
-    <div class="loading-content">
-      <div class="loading-logo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-        </svg>
-      </div>
-      <div class="loading-spinner"></div>
-      <p class="loading-text">Loading BodyWise...</p>
-    </div>
-  </div>
-
-  <!-- ============================================
-       NAVBAR
-       ============================================ -->
+  <!-- Navbar -->
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="index.html" class="nav-logo">
@@ -57,673 +25,185 @@
             <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
           </svg>
         </div>
-        <span>BodyWise</span>
+        <span>BodyCheck</span>
       </a>
-
-      <div class="nav-links" id="navLinks">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="body-map.html" class="nav-link">Symptom Navigator</a>
-        <a href="consultation.html" class="nav-link">Consultation</a>
-        <a href="consultation.html#hospital-finder" class="nav-link emergency-link">Emergency</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#footer" class="nav-link">Contact</a>
-        <a href="body-map.html" class="nav-cta btn btn-primary">Get Started</a>
-      </div>
-
-      <div class="nav-hamburger" id="navHamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
-    <div class="nav-overlay" id="navOverlay"></div>
   </nav>
 
-  <!-- ============================================
-       HERO SECTION
-       ============================================ -->
-  <section class="hero" id="hero">
-    <!-- Background effects -->
-    <div class="hero-bg">
-      <div class="hero-bg-gradient g1"></div>
-      <div class="hero-bg-gradient g2"></div>
-      <div class="hero-bg-gradient g3"></div>
-      <canvas id="particles-canvas"></canvas>
-    </div>
-
-    <div class="container">
-      <!-- Hero Content -->
-      <div class="hero-content">
-        <div class="section-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+  <!-- Sidebar -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
           </svg>
-          AI-Powered Health Platform
         </div>
-
-        <h1 class="hero-title">
-          <span class="line">Understand Your</span>
-          <span class="line"><span class="text-gradient">Body Better</span></span>
-        </h1>
-
-        <p class="hero-subtitle">
-          Navigate symptoms intelligently with our advanced body mapping system.
-          Get instant insights, remedies, and professional guidance — all in one place.
-        </p>
-
-        <div class="hero-actions">
-          <a href="body-map.html" class="btn btn-primary btn-lg">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            Explore Symptoms
-          </a>
-          <a href="body-map.html" class="btn btn-secondary btn-lg">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            Start Diagnosis
-          </a>
-        </div>
-
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="hero-stat-value text-gradient">500+</div>
-            <div class="hero-stat-label">Symptoms Mapped</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-value text-gradient">98%</div>
-            <div class="hero-stat-label">Accuracy Rate</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-value text-gradient">24/7</div>
-            <div class="hero-stat-label">Available</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hero Visual -->
-      <div class="hero-visual">
-        <div class="hero-body-container">
-          <div class="hero-body-glow"></div>
-
-          <!-- Body SVG Illustration -->
-          <svg class="hero-body-svg" viewBox="0 0 300 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Body outline -->
-            <defs>
-              <linearGradient id="bodyGrad" x1="150" y1="0" x2="150" y2="500" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#10B981" stop-opacity="0.8"/>
-                <stop offset="50%" stop-color="#06B6D4" stop-opacity="0.6"/>
-                <stop offset="100%" stop-color="#10B981" stop-opacity="0.4"/>
-              </linearGradient>
-              <linearGradient id="bodyFill" x1="150" y1="0" x2="150" y2="500" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#10B981" stop-opacity="0.05"/>
-                <stop offset="100%" stop-color="#06B6D4" stop-opacity="0.02"/>
-              </linearGradient>
-              <filter id="bodyGlow">
-                <feGaussianBlur stdDeviation="3" result="blur"/>
-                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-              </filter>
-            </defs>
-
-            <!-- Head -->
-            <ellipse cx="150" cy="52" rx="32" ry="38" stroke="url(#bodyGrad)" stroke-width="1.5" fill="url(#bodyFill)" filter="url(#bodyGlow)"/>
-
-            <!-- Neck -->
-            <path d="M138 88 L138 105 L162 105 L162 88" stroke="url(#bodyGrad)" stroke-width="1.5" fill="url(#bodyFill)"/>
-
-            <!-- Torso -->
-            <path d="M108 105 L100 115 L90 190 L95 260 L120 280 L150 290 L180 280 L205 260 L210 190 L200 115 L192 105 Z" stroke="url(#bodyGrad)" stroke-width="1.5" fill="url(#bodyFill)" filter="url(#bodyGlow)"/>
-
-            <!-- Left Arm -->
-            <path d="M108 105 L80 130 L60 180 L50 230 L45 260 L55 262 L68 232 L82 185 L98 145" stroke="url(#bodyGrad)" stroke-width="1.5" fill="none"/>
-            <!-- Left Hand -->
-            <ellipse cx="48" cy="265" rx="10" ry="14" stroke="url(#bodyGrad)" stroke-width="1.2" fill="url(#bodyFill)"/>
-
-            <!-- Right Arm -->
-            <path d="M192 105 L220 130 L240 180 L250 230 L255 260 L245 262 L232 232 L218 185 L202 145" stroke="url(#bodyGrad)" stroke-width="1.5" fill="none"/>
-            <!-- Right Hand -->
-            <ellipse cx="252" cy="265" rx="10" ry="14" stroke="url(#bodyGrad)" stroke-width="1.2" fill="url(#bodyFill)"/>
-
-            <!-- Left Leg -->
-            <path d="M120 280 L115 320 L108 380 L105 430 L102 470 L118 472 L120 435 L125 380 L130 320 L140 290" stroke="url(#bodyGrad)" stroke-width="1.5" fill="none"/>
-            <!-- Left Foot -->
-            <path d="M102 470 L95 480 L95 488 L120 490 L118 472" stroke="url(#bodyGrad)" stroke-width="1.2" fill="url(#bodyFill)"/>
-
-            <!-- Right Leg -->
-            <path d="M180 280 L185 320 L192 380 L195 430 L198 470 L182 472 L180 435 L175 380 L170 320 L160 290" stroke="url(#bodyGrad)" stroke-width="1.5" fill="none"/>
-            <!-- Right Foot -->
-            <path d="M198 470 L205 480 L205 488 L180 490 L182 472" stroke="url(#bodyGrad)" stroke-width="1.2" fill="url(#bodyFill)"/>
-
-            <!-- Internal details — chest lines -->
-            <path d="M150 115 L150 180" stroke="url(#bodyGrad)" stroke-width="0.5" opacity="0.3"/>
-            <path d="M130 130 L170 130" stroke="url(#bodyGrad)" stroke-width="0.5" opacity="0.3"/>
-            <path d="M125 155 L175 155" stroke="url(#bodyGrad)" stroke-width="0.5" opacity="0.3"/>
-
-            <!-- Heart indicator -->
-            <circle cx="160" cy="145" r="8" stroke="#FF5C7A" stroke-width="1" fill="rgba(255,92,122,0.1)" opacity="0.8">
-              <animate attributeName="r" values="8;10;8" dur="1.5s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.8;0.4;0.8" dur="1.5s" repeatCount="indefinite"/>
-            </circle>
-
-            <!-- Brain indicator -->
-            <circle cx="150" cy="45" r="6" stroke="#00FFC6" stroke-width="1" fill="rgba(0,255,198,0.1)" opacity="0.6">
-              <animate attributeName="opacity" values="0.6;0.3;0.6" dur="2s" repeatCount="indefinite"/>
-            </circle>
-
-            <!-- Grid overlay -->
-            <line x1="0" y1="100" x2="300" y2="100" stroke="url(#bodyGrad)" stroke-width="0.2" opacity="0.15"/>
-            <line x1="0" y1="200" x2="300" y2="200" stroke="url(#bodyGrad)" stroke-width="0.2" opacity="0.15"/>
-            <line x1="0" y1="300" x2="300" y2="300" stroke="url(#bodyGrad)" stroke-width="0.2" opacity="0.15"/>
-            <line x1="0" y1="400" x2="300" y2="400" stroke="url(#bodyGrad)" stroke-width="0.2" opacity="0.15"/>
-            <line x1="100" y1="0" x2="100" y2="500" stroke="url(#bodyGrad)" stroke-width="0.2" opacity="0.15"/>
-            <line x1="200" y1="0" x2="200" y2="500" stroke="url(#bodyGrad)" stroke-width="0.2" opacity="0.15"/>
-          </svg>
-
-          <!-- Scan Line -->
-          <div class="hero-scan-line"></div>
-        </div>
-
-        <!-- Floating orbit items -->
-        <div class="hero-orbit o1">
-          <div class="hero-orbit-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          </div>
-        </div>
-        <div class="hero-orbit o2">
-          <div class="hero-orbit-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 12V6"/><path d="M12 12l4 2"/></svg>
-          </div>
-        </div>
-        <div class="hero-orbit o3">
-          <div class="hero-orbit-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-          </div>
-        </div>
-        <div class="hero-orbit o4">
-          <div class="hero-orbit-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-          </div>
-        </div>
-        <div class="hero-orbit o5">
-          <div class="hero-orbit-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4m0 14v4M4.22 4.22l2.83 2.83m9.9 9.9 2.83 2.83M1 12h4m14 0h4M4.22 19.78l2.83-2.83m9.9-9.9 2.83-2.83"/></svg>
-          </div>
-        </div>
-      </div>
+        <span>BodyCheck</span>
+      </a>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
-  </section>
-
-  <!-- ============================================
-       FEATURES SECTION
-       ============================================ -->
-  <section class="features section" id="features">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Core Features
-        </div>
-        <h2 class="section-title">
-          Everything You Need to<br/>
-          <span class="text-gradient">Navigate Your Health</span>
-        </h2>
-        <p class="section-subtitle">
-          Advanced AI-powered tools designed to help you understand symptoms, find remedies, and connect with healthcare professionals.
-        </p>
-      </div>
-
-      <div class="features-grid">
-        <!-- Card 1 -->
-        <div class="feature-card glass-panel">
-          <div class="feature-card-icon cyan">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
-            </svg>
-          </div>
-          <h3 class="feature-card-title">Interactive Anatomy</h3>
-          <p class="feature-card-desc">
-            Explore a detailed 3D body map. Click on any body part to identify symptoms and get instant health information.
-          </p>
-          <a href="body-map.html" class="feature-card-link">
-            Explore Map
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="feature-card glass-panel">
-          <div class="feature-card-icon blue">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
-            </svg>
-          </div>
-          <h3 class="feature-card-title">Symptom Detection</h3>
-          <p class="feature-card-desc">
-            Input your symptoms and our AI engine analyzes patterns to suggest potential conditions with high accuracy.
-          </p>
-          <a href="body-map.html" class="feature-card-link">
-            Try Detection
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="feature-card glass-panel">
-          <div class="feature-card-icon green">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 21h10"/><path d="M12 21V11"/><path d="M5 11a7 7 0 0 1 14 0"/>
-              <circle cx="12" cy="5" r="3"/>
-            </svg>
-          </div>
-          <h3 class="feature-card-title">Natural Remedies</h3>
-          <p class="feature-card-desc">
-            Discover evidence-based home remedies and natural treatments tailored to your specific symptoms.
-          </p>
-          <a href="body-map.html" class="feature-card-link">
-            View Remedies
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="feature-card glass-panel">
-          <div class="feature-card-icon danger">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
-              <path d="M12 9v4"/><path d="M12 17h.01"/>
-            </svg>
-          </div>
-          <h3 class="feature-card-title">Severity Analysis</h3>
-          <p class="feature-card-desc">
-            Get real-time severity scoring for your symptoms. Know when to rest, self-treat, or seek immediate care.
-          </p>
-          <a href="body-map.html" class="feature-card-link">
-            Check Severity
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="feature-card glass-panel">
-          <div class="feature-card-icon cyan">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <h3 class="feature-card-title">Doctor Guidance</h3>
-          <p class="feature-card-desc">
-            Connect with certified healthcare professionals. Get personalized recommendations and telemedicine support.
-          </p>
-          <a href="consultation.html" class="feature-card-link">
-            Find Doctors
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="sidebar-link active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+      <a href="body-map.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        Symptom Navigator
+      </a>
+      <a href="consultation.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Consultation
+      </a>
+      <a href="consultation.html#hospital-finder" class="sidebar-link emergency">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Emergency
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <p>BodyCheck v2.0 — Health Dashboard</p>
     </div>
-  </section>
+  </aside>
 
-  <!-- ============================================
-       BODY PREVIEW SECTION
-       ============================================ -->
-  <section class="body-preview section" id="body-preview">
+  <!-- Main Content -->
+  <main class="page-content" id="main">
     <div class="container">
-      <div class="body-preview-wrapper">
-        <!-- Info Side -->
-        <div class="body-preview-info">
-          <div class="section-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            Body Navigator
-          </div>
-          <h2 class="section-title">
-            Interactive<br/>
-            <span class="text-gradient">Body Mapping</span>
-          </h2>
-          <p class="section-subtitle">
-            Click on any body region to explore symptoms, conditions, and remedies specific to that area. Our intelligent system guides you through the diagnosis process.
-          </p>
+      <section class="hero">
+        <div class="hero-header">
+          <h1>Understand Your <span class="text-gradient">Body Better</span></h1>
+          <p>Navigate symptoms, find remedies, and connect with healthcare professionals.</p>
+        </div>
 
-          <div class="body-preview-features">
-            <div class="body-preview-feature">
-              <div class="body-preview-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-              </div>
-              <div>
-                <h4>Visual Symptom Mapping</h4>
-                <p>Pinpoint exactly where you feel discomfort on our interactive body model.</p>
-              </div>
-            </div>
-            <div class="body-preview-feature">
-              <div class="body-preview-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
-              </div>
-              <div>
-                <h4>AI-Powered Analysis</h4>
-                <p>Machine learning algorithms cross-reference thousands of medical records.</p>
-              </div>
-            </div>
-            <div class="body-preview-feature">
-              <div class="body-preview-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6V2H8"/><path d="m8 18-4 4V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2Z"/><path d="M2 12h2"/><path d="M9 11v2"/><path d="M15 11v2"/><path d="M12 15v2"/></svg>
-              </div>
-              <div>
-                <h4>Instant Recommendations</h4>
-                <p>Receive personalized remedies and doctor referrals in seconds.</p>
-              </div>
-            </div>
+        <!-- Important Note -->
+        <div class="important-note info">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div class="important-note-content">
+            <strong>Health Disclaimer</strong>
+            <p>This tool provides general health information only. Always consult a qualified healthcare professional for medical advice.</p>
           </div>
         </div>
 
-        <!-- Body Visual Side -->
-        <div class="body-preview-visual">
-          <div class="body-interactive">
-            <div class="body-interactive-glow"></div>
-
-            <svg viewBox="0 0 300 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="bodyGrad2" x1="150" y1="0" x2="150" y2="500" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#00D1FF" stop-opacity="0.9"/>
-                  <stop offset="50%" stop-color="#5B8CFF" stop-opacity="0.7"/>
-                  <stop offset="100%" stop-color="#00FFC6" stop-opacity="0.5"/>
-                </linearGradient>
-                <linearGradient id="bodyFill2" x1="150" y1="0" x2="150" y2="500" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#00D1FF" stop-opacity="0.06"/>
-                  <stop offset="100%" stop-color="#5B8CFF" stop-opacity="0.02"/>
-                </linearGradient>
-              </defs>
-
-              <!-- Head region -->
-              <ellipse class="body-region" data-region="head" cx="150" cy="52" rx="32" ry="38" stroke="url(#bodyGrad2)" stroke-width="1.5" fill="url(#bodyFill2)"/>
-
-              <!-- Neck -->
-              <path d="M138 88 L138 105 L162 105 L162 88" stroke="url(#bodyGrad2)" stroke-width="1.5" fill="url(#bodyFill2)"/>
-
-              <!-- Torso region -->
-              <path class="body-region" data-region="torso" d="M108 105 L100 115 L90 190 L95 260 L120 280 L150 290 L180 280 L205 260 L210 190 L200 115 L192 105 Z" stroke="url(#bodyGrad2)" stroke-width="1.5" fill="url(#bodyFill2)"/>
-
-              <!-- Left Arm region -->
-              <path class="body-region" data-region="left-arm" d="M108 105 L80 130 L60 180 L50 230 L45 260 L55 262 L68 232 L82 185 L98 145" stroke="url(#bodyGrad2)" stroke-width="1.5" fill="none"/>
-              <ellipse class="body-region" data-region="left-arm" cx="48" cy="265" rx="10" ry="14" stroke="url(#bodyGrad2)" stroke-width="1.2" fill="url(#bodyFill2)"/>
-
-              <!-- Right Arm region -->
-              <path class="body-region" data-region="right-arm" d="M192 105 L220 130 L240 180 L250 230 L255 260 L245 262 L232 232 L218 185 L202 145" stroke="url(#bodyGrad2)" stroke-width="1.5" fill="none"/>
-              <ellipse class="body-region" data-region="right-arm" cx="252" cy="265" rx="10" ry="14" stroke="url(#bodyGrad2)" stroke-width="1.2" fill="url(#bodyFill2)"/>
-
-              <!-- Left Leg region -->
-              <path class="body-region" data-region="left-leg" d="M120 280 L115 320 L108 380 L105 430 L102 470 L118 472 L120 435 L125 380 L130 320 L140 290" stroke="url(#bodyGrad2)" stroke-width="1.5" fill="none"/>
-              <path class="body-region" data-region="left-leg" d="M102 470 L95 480 L95 488 L120 490 L118 472" stroke="url(#bodyGrad2)" stroke-width="1.2" fill="url(#bodyFill2)"/>
-
-              <!-- Right Leg region -->
-              <path class="body-region" data-region="right-leg" d="M180 280 L185 320 L192 380 L195 430 L198 470 L182 472 L180 435 L175 380 L170 320 L160 290" stroke="url(#bodyGrad2)" stroke-width="1.5" fill="none"/>
-              <path class="body-region" data-region="right-leg" d="M198 470 L205 480 L205 488 L180 490 L182 472" stroke="url(#bodyGrad2)" stroke-width="1.2" fill="url(#bodyFill2)"/>
-
-              <!-- Chest lines -->
-              <path d="M150 115 L150 180" stroke="url(#bodyGrad2)" stroke-width="0.5" opacity="0.3"/>
-              <path d="M130 130 L170 130" stroke="url(#bodyGrad2)" stroke-width="0.5" opacity="0.3"/>
-              <path d="M125 155 L175 155" stroke="url(#bodyGrad2)" stroke-width="0.5" opacity="0.3"/>
-            </svg>
-
-            <!-- Pulse indicators -->
-            <div class="body-pulse p-head" data-region="head">
-              <div class="body-pulse-dot">
-                <div class="body-pulse-ring"></div>
-              </div>
-              <div class="body-pulse-label">Head & Brain</div>
+        <!-- Dashboard Cards -->
+        <div class="dashboard-grid">
+          <a href="body-map.html" class="dash-card">
+            <div class="dash-card-icon green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
             </div>
-            <div class="body-pulse p-chest" data-region="chest">
-              <div class="body-pulse-dot">
-                <div class="body-pulse-ring"></div>
-              </div>
-              <div class="body-pulse-label">Chest & Heart</div>
-            </div>
-            <div class="body-pulse p-stomach" data-region="stomach">
-              <div class="body-pulse-dot">
-                <div class="body-pulse-ring"></div>
-              </div>
-              <div class="body-pulse-label">Stomach & Abdomen</div>
-            </div>
-            <div class="body-pulse p-arm-l" data-region="left-arm">
-              <div class="body-pulse-dot">
-                <div class="body-pulse-ring"></div>
-              </div>
-              <div class="body-pulse-label">Left Arm</div>
-            </div>
-            <div class="body-pulse p-arm-r" data-region="right-arm">
-              <div class="body-pulse-dot">
-                <div class="body-pulse-ring"></div>
-              </div>
-              <div class="body-pulse-label">Right Arm</div>
-            </div>
-            <div class="body-pulse p-leg-l" data-region="left-leg">
-              <div class="body-pulse-dot">
-                <div class="body-pulse-ring"></div>
-              </div>
-              <div class="body-pulse-label">Left Leg</div>
-            </div>
-            <div class="body-pulse p-leg-r" data-region="right-leg">
-              <div class="body-pulse-dot">
-                <div class="body-pulse-ring"></div>
-              </div>
-              <div class="body-pulse-label">Right Leg</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       CTA SECTION
-       ============================================ -->
-  <section class="cta-section section" id="cta">
-    <div class="container">
-      <div class="cta-card">
-        <div class="cta-content">
-          <div class="section-badge" style="margin: 0 auto var(--space-lg);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            Get Started Today
-          </div>
-          <h2 class="cta-title">
-            Ready to <span class="text-gradient">Take Control</span><br/>of Your Health?
-          </h2>
-          <p class="cta-subtitle">
-            Join thousands of users who trust BodyWise for intelligent health navigation. Start your journey to better understanding your body.
-          </p>
-          <div class="cta-actions">
-            <a href="body-map.html" class="btn btn-primary">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-              Start Free Diagnosis
-            </a>
-            <a href="#features" class="btn btn-secondary">
-              Learn More
+            <h3>Symptom Navigator</h3>
+            <p>Interactive body map to identify and explore symptoms</p>
+            <div class="dash-card-arrow">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       ABOUT SECTION
-       ============================================ -->
-  <section class="about-section section" id="about">
-    <div class="container">
-      <div class="about-wrapper">
-        <div class="about-content">
-          <div class="section-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 16v-4"/>
-              <path d="M12 8h.01"/>
-            </svg>
-            Our Mission
-          </div>
-          <h2 class="section-title">
-            Democratizing <span class="text-gradient">Healthcare Access</span>
-          </h2>
-          <p class="section-subtitle">
-            At BodyWise, we believe everyone deserves access to intelligent health insights. Our AI-powered platform bridges the gap between symptom awareness and professional care.
-          </p>
-
-          <div class="about-values">
-            <div class="about-value-card glass-panel">
-              <div class="about-value-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
-                </svg>
-              </div>
-              <h4>Accessibility First</h4>
-              <p>Health information should be accessible to everyone, everywhere, regardless of location or resources.</p>
             </div>
-
-            <div class="about-value-card glass-panel">
-              <div class="about-value-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                </svg>
-              </div>
-              <h4>AI-Powered Precision</h4>
-              <p>Leveraging cutting-edge machine learning to provide accurate, data-driven health insights.</p>
-            </div>
-
-            <div class="about-value-card glass-panel">
-              <div class="about-value-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
-              </div>
-              <h4>Human-Centered Care</h4>
-              <p>Technology augments but never replaces the human touch in healthcare decisions.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="about-visual">
-          <div class="about-visual-glow"></div>
-          <div class="about-visual-content">
-            <div class="about-stat-card glass-panel">
-              <div class="about-stat-value text-gradient">98%</div>
-              <div class="about-stat-label">User Satisfaction</div>
-            </div>
-            <div class="about-stat-card glass-panel">
-              <div class="about-stat-value text-gradient">50K+</div>
-              <div class="about-stat-label">Active Users</div>
-            </div>
-            <div class="about-stat-card glass-panel">
-              <div class="about-stat-value text-gradient">24/7</div>
-              <div class="about-stat-label">Support Available</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       DISCLAIMER SECTION
-       ============================================ -->
-  <section class="disclaimer-section">
-    <div class="container">
-      <div class="disclaimer-banner glass-panel">
-        <div class="disclaimer-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 16v-4"/>
-            <path d="M12 8h.01"/>
-          </svg>
-        </div>
-        <div class="disclaimer-content">
-          <h4>Important Medical Disclaimer</h4>
-          <p>This platform is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       FOOTER
-       ============================================ -->
-  <footer class="footer" id="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <!-- Brand -->
-        <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
-            <div class="nav-logo-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-              </svg>
-            </div>
-            <span>BodyWise</span>
           </a>
-          <p>
-            Intelligent human body symptom navigator powered by AI. Connect with expert doctors and take control of your health journey.
-          </p>
-          <div class="footer-social">
-            <a href="index.html#footer" aria-label="Twitter">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-            </a>
-            <a href="index.html#footer" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            </a>
-            <a href="index.html#footer" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
+
+          <a href="body-map.html" class="dash-card">
+            <div class="dash-card-icon blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+            <h3>Symptom Detection</h3>
+            <p>AI-powered analysis to identify potential conditions</p>
+            <div class="dash-card-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+          </a>
+
+          <a href="body-map.html" class="dash-card">
+            <div class="dash-card-icon amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 21V11"/><path d="M5 11a7 7 0 0 1 14 0"/><circle cx="12" cy="5" r="3"/></svg>
+            </div>
+            <h3>Natural Remedies</h3>
+            <p>Evidence-based home remedies tailored to your symptoms</p>
+            <div class="dash-card-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+          </a>
+
+          <a href="consultation.html" class="dash-card">
+            <div class="dash-card-icon purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Doctor Consultation</h3>
+            <p>Connect with certified healthcare professionals</p>
+            <div class="dash-card-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+          </a>
+
+          <a href="body-map.html" class="dash-card">
+            <div class="dash-card-icon red">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            </div>
+            <h3>Severity Analysis</h3>
+            <p>Real-time severity scoring for your symptoms</p>
+            <div class="dash-card-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+          </a>
+
+          <a href="consultation.html#hospital-finder" class="dash-card">
+            <div class="dash-card-icon blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3>Hospital Finder</h3>
+            <p>Find nearby hospitals and emergency care facilities</p>
+            <div class="dash-card-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-value">500+</div>
+            <div class="stat-label">Symptoms</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">98%</div>
+            <div class="stat-label">Accuracy</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">24/7</div>
+            <div class="stat-label">Available</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">50K+</div>
+            <div class="stat-label">Users</div>
           </div>
         </div>
-
-        <!-- Product -->
-        <div class="footer-column">
-          <h4>Product</h4>
-          <a href="body-map.html">Symptom Navigator</a>
-          <a href="consultation.html">Doctor Consultation</a>
-          <a href="consultation.html#hospital-finder">Hospital Finder</a>
-          <a href="consultation.html">Telemedicine</a>
-          <a href="body-map.html">Health Records</a>
-        </div>
-
-        <!-- Resources -->
-        <div class="footer-column">
-          <h4>Resources</h4>
-          <a href="index.html">Health Blog</a>
-          <a href="body-map.html">Medical Library</a>
-          <a href="body-map.html">Symptom Guide</a>
-          <a href="index.html">Community</a>
-          <a href="index.html#footer">Support</a>
-        </div>
-
-        <!-- Newsletter -->
-        <div class="footer-column footer-newsletter">
-          <h4>Stay Updated</h4>
-          <p>Get the latest health insights and platform updates delivered to your inbox.</p>
-          <form class="newsletter-form" id="newsletterForm">
-            <input type="email" class="newsletter-input" placeholder="Enter your email" required aria-label="Email address" />
-            <button type="submit" class="btn btn-primary btn-sm">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-              </svg>
-            </button>
-          </form>
-          <p class="newsletter-disclaimer">We respect your privacy. Unsubscribe at any time.</p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 BodyWise. All rights reserved.</p>
-        <div class="footer-bottom-links">
-          <a href="index.html">Privacy</a>
-          <a href="index.html">Terms</a>
-          <a href="index.html">Cookies</a>
-        </div>
-      </div>
+      </section>
     </div>
-  </footer>
 
-  <!-- Scripts -->
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <p>&copy; 2025 BodyCheck. For informational purposes only.</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="body-map.html">Symptoms</a>
+            <a href="consultation.html">Consultation</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
   <script src="js/app.js"></script>
 </body>
 </html>

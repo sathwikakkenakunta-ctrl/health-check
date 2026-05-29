@@ -1,320 +1,46 @@
 /* ============================================
-   BodyWise — Responsive Design System
+   BodyCheck — Responsive (mobile-first)
    ============================================ */
 
-/* --- Tablet (max-width: 1024px) --- */
+/* Tablet */
 @media (max-width: 1024px) {
-  :root {
-    --text-6xl: 3.5rem;
-    --text-5xl: 2.75rem;
-    --text-4xl: 2rem;
-  }
-
-  .container {
-    padding: 0 var(--space-lg);
-  }
-
-  .section {
-    padding: var(--space-4xl) 0;
-  }
-
-  /* Navbar */
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 300px;
-    height: 100vh;
-    background: rgba(7, 17, 31, 0.97);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: calc(var(--nav-height) + var(--space-xl)) var(--space-xl) var(--space-xl);
-    gap: var(--space-xs);
-    transition: right var(--transition-smooth);
-    border-left: 1px solid rgba(0, 209, 255, 0.08);
-    z-index: 1000;
-  }
-
-  .nav-links.open {
-    right: 0;
-  }
-
-  .nav-link {
-    width: 100%;
-    padding: var(--space-md);
-    font-size: var(--text-base);
-  }
-
-  .nav-cta {
-    margin-left: 0;
-    margin-top: var(--space-md);
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .nav-hamburger {
-    display: flex;
-  }
-
-  /* Mobile overlay */
-  .nav-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-  }
-
-  .nav-overlay.active {
-    display: block;
-  }
-
-  /* Hero */
-  .hero .container {
+  .anatomy-layout {
     grid-template-columns: 1fr;
-    gap: var(--space-2xl);
-    text-align: center;
   }
-
-  .hero-content {
-    max-width: 100%;
-    order: 1;
+  .anatomy-map-panel {
+    position: relative;
+    top: auto;
   }
-
-  .hero-visual {
-    order: 0;
-    min-height: 400px;
-  }
-
-  .hero-subtitle {
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .hero-stats {
-    justify-content: center;
-  }
-
-  .hero-body-container {
-    width: 280px;
-    height: 400px;
-  }
-
-  /* Features */
-  .features-grid {
+  .consultation-stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .features-grid .feature-card:nth-child(4),
-  .features-grid .feature-card:nth-child(5) {
-    grid-column: auto;
-  }
-
-  .features-grid .feature-card:nth-child(5) {
-    grid-column: 1 / -1;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  /* Body Preview */
-  .body-preview-wrapper {
-    grid-template-columns: 1fr;
-    gap: var(--space-2xl);
-  }
-
-  .body-preview-info {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .body-preview-info .section-title,
-  .body-preview-info .section-subtitle {
-    text-align: center;
-  }
-
-  .body-preview-info .section-subtitle {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .body-preview-visual {
-    min-height: 500px;
-  }
-
-  /* Footer */
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-2xl);
-  }
-
-  .footer-brand {
-    grid-column: 1 / -1;
-  }
 }
 
-/* --- Mobile (max-width: 768px) --- */
+/* Mobile */
 @media (max-width: 768px) {
-  :root {
-    --text-6xl: 2.5rem;
-    --text-5xl: 2rem;
-    --text-4xl: 1.75rem;
-    --text-3xl: 1.5rem;
-    --nav-height: 64px;
-  }
-
-  .container {
-    padding: 0 var(--space-md);
-  }
-
-  .section {
-    padding: var(--space-3xl) 0;
-  }
-
-  /* Hero */
-  .hero {
-    min-height: auto;
-    padding-top: calc(var(--nav-height) + var(--space-2xl));
-    padding-bottom: var(--space-2xl);
-  }
-
-  .hero-badge {
-    font-size: 10px;
-  }
-
-  .hero-title {
-    font-size: var(--text-5xl);
-  }
-
-  .hero-subtitle {
-    font-size: var(--text-base);
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .hero-actions .btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .hero-stats {
-    gap: var(--space-lg);
-    flex-wrap: wrap;
-  }
-
-  .hero-stat-value {
-    font-size: var(--text-xl);
-  }
-
-  .hero-visual {
-    min-height: 350px;
-  }
-
-  .hero-body-container {
-    width: 220px;
-    height: 320px;
-  }
-
-  .hero-orbit {
-    display: none;
-  }
-
-  /* Features */
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .features-grid .feature-card:nth-child(5) {
-    max-width: 100%;
-  }
-
-  .feature-card {
-    padding: var(--space-xl);
-  }
-
-  /* Body Preview */
-  .body-preview-visual {
-    min-height: 420px;
-  }
-
-  .body-interactive {
-    width: 240px;
-    height: 400px;
-  }
-
-  .body-pulse-label {
-    display: none;
-  }
-
-  /* CTA */
-  .cta-card {
-    padding: var(--space-2xl) var(--space-lg);
-  }
-
-  .cta-title {
-    font-size: var(--text-3xl);
-  }
-
-  .cta-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .cta-actions .btn {
-    width: 100%;
-    max-width: 300px;
-    justify-content: center;
-  }
-
-  /* Footer */
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
-  }
-
-  .footer-brand {
-    grid-column: auto;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    gap: var(--space-md);
-    text-align: center;
-  }
+  .hero { padding: 2rem 0 1.5rem; }
+  .hero-header h1 { font-size: 1.5rem; }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: 1fr; }
+  .doctors-grid { grid-template-columns: 1fr; }
+  .consultation-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .hospital-search { flex-direction: column; }
+  .hospital-search-input { min-width: 100%; }
+  .hospital-symptom-filter { flex-direction: column; align-items: flex-start; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .anatomy-topbar-inner { flex-direction: column; gap: 0.75rem; }
+  .anatomy-search { max-width: 100%; }
 }
 
-/* --- Small Mobile (max-width: 480px) --- */
+/* Small mobile */
 @media (max-width: 480px) {
-  :root {
-    --text-6xl: 2rem;
-    --text-5xl: 1.75rem;
-    --text-4xl: 1.5rem;
-  }
-
-  .hero-title {
-    font-size: var(--text-4xl);
-  }
-
-  .section-header {
-    margin-bottom: var(--space-2xl);
-  }
-
-  .hero-stats {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-stat {
-    text-align: center;
-  }
+  .container { padding: 0 1rem; }
+  .hero-header h1 { font-size: 1.375rem; }
+  .dashboard-grid { gap: 0.75rem; }
+  .dash-card { padding: 1.25rem; }
+  .stats-row { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .stat-card { padding: 1rem; }
+  .consultation-stats-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 }
