@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BodyWise — Anatomy Navigator</title>
-
+  <title>BodyCheck — Symptom Navigator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/responsive.css" />
@@ -16,65 +14,67 @@
 </head>
 <body>
 
-  <!-- Skip Link for Accessibility -->
   <a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- Floating Neon Orbs -->
-  <div class="neon-orb o1"></div>
-  <div class="neon-orb o2"></div>
-  <div class="neon-orb o3"></div>
-
-  <!-- Cursor Glow -->
-  <div class="cursor-glow" id="cursorGlow"></div>
-
-  <!-- Loading Screen -->
-  <div class="loading-screen" id="loadingScreen">
-    <div class="loading-content">
-      <div class="loading-logo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-        </svg>
-      </div>
-      <div class="loading-spinner"></div>
-      <p class="loading-text">Loading BodyWise...</p>
-    </div>
-  </div>
-
-  <!-- ============================================
-       NAVBAR (same as landing)
-       ============================================ -->
+  <!-- Navbar -->
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="index.html" class="nav-logo">
         <div class="nav-logo-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
         </div>
-        <span>BodyWise</span>
+        <span>BodyCheck</span>
       </a>
-
-      <div class="nav-links" id="navLinks">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="body-map.html" class="nav-link active">Symptom Navigator</a>
-        <a href="consultation.html" class="nav-link">Consultation</a>
-        <a href="consultation.html#hospital-finder" class="nav-link emergency-link">Emergency</a>
-        <a href="index.html#about" class="nav-link">About</a>
-        <a href="index.html#footer" class="nav-link">Contact</a>
-      </div>
-
-      <div class="nav-hamburger" id="navHamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
-    <div class="nav-overlay" id="navOverlay"></div>
   </nav>
 
-  <!-- ============================================
-       MAIN ANATOMY EXPLORER
-       ============================================ -->
+  <!-- Sidebar -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
+        </div>
+        <span>BodyCheck</span>
+      </a>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
+      <a href="body-map.html" class="sidebar-link active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        Symptom Navigator
+      </a>
+      <a href="consultation.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Consultation
+      </a>
+      <a href="consultation.html#hospital-finder" class="sidebar-link emergency">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Emergency
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <p>BodyCheck v2.0 — Health Dashboard</p>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
   <main class="anatomy-page" id="main">
 
     <!-- Top Bar -->
@@ -84,15 +84,11 @@
           <div class="anatomy-breadcrumb">
             <a href="index.html">Home</a>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-            <span>Anatomy Navigator</span>
+            <span>Symptom Navigator</span>
           </div>
-
-          <!-- Search Bar -->
           <div class="anatomy-search">
-            <svg class="anatomy-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
-            </svg>
-            <input type="text" id="symptomSearch" class="anatomy-search-input" placeholder="Search symptoms, body parts, or conditions..." autocomplete="off" />
+            <svg class="anatomy-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="symptomSearch" class="anatomy-search-input" placeholder="Search symptoms or body parts..." autocomplete="off" />
             <div class="anatomy-search-results" id="searchResults"></div>
           </div>
         </div>
@@ -109,7 +105,6 @@
             <div class="anatomy-map-header">
               <h2 class="anatomy-map-title">Interactive Body Map</h2>
               <div class="anatomy-map-controls">
-                <!-- Gender Toggle -->
                 <div class="gender-toggle">
                   <button class="gender-btn active" data-gender="male" id="genderMale">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="14" r="5"/><path d="M19 5l-4.5 4.5M19 5h-4M19 5v4"/></svg>
@@ -120,7 +115,6 @@
                     Female
                   </button>
                 </div>
-                <!-- View Toggle -->
                 <div class="view-toggle">
                   <button class="view-btn active" data-view="front" id="viewFront">Front</button>
                   <button class="view-btn" data-view="back" id="viewBack">Back</button>
@@ -128,88 +122,43 @@
               </div>
             </div>
 
-            <!-- Body SVG Container -->
             <div class="anatomy-body-wrapper">
-              <div class="anatomy-body-glow"></div>
-
               <!-- FRONT VIEW -->
               <div class="anatomy-body-view active" id="bodyFront">
                 <svg viewBox="0 0 400 700" fill="none" xmlns="http://www.w3.org/2000/svg" class="anatomy-svg">
-                  <!-- Head -->
                   <ellipse class="body-part" data-part="Head" cx="200" cy="60" rx="38" ry="45" />
-                  <!-- Eyes region -->
                   <ellipse class="body-part sub-part" data-part="Eyes" cx="200" cy="50" rx="28" ry="10" />
-                  <!-- Nose -->
                   <ellipse class="body-part sub-part" data-part="Nose" cx="200" cy="65" rx="6" ry="10" />
-                  <!-- Mouth -->
                   <ellipse class="body-part sub-part" data-part="Mouth" cx="200" cy="80" rx="12" ry="6" />
-                  <!-- Ears -->
                   <ellipse class="body-part sub-part" data-part="Ears" cx="160" cy="55" rx="6" ry="12" />
                   <ellipse class="body-part sub-part" data-part="Ears" cx="240" cy="55" rx="6" ry="12" />
-                  <!-- Neck -->
                   <rect class="body-part" data-part="Neck" x="185" y="102" width="30" height="28" rx="8" />
-                  <!-- Shoulders -->
                   <path class="body-part" data-part="Shoulder" d="M148 135 Q145 120 185 125 L185 150 L148 150 Z" />
                   <path class="body-part" data-part="Shoulder" d="M252 135 Q255 120 215 125 L215 150 L252 150 Z" />
-                  <!-- Chest -->
                   <path class="body-part" data-part="Chest" d="M150 150 L250 150 L248 230 L152 230 Z" />
-                  <!-- Abdomen -->
                   <path class="body-part" data-part="Abdomen" d="M155 230 L245 230 L240 320 L160 320 Z" />
-                  <!-- Left Arm -->
                   <path class="body-part" data-part="Arm" d="M115 150 L148 150 L148 260 L115 260 Z" />
-                  <!-- Right Arm -->
                   <path class="body-part" data-part="Arm" d="M252 150 L285 150 L285 260 L252 260 Z" />
-                  <!-- Left Elbow -->
                   <rect class="body-part" data-part="Elbow" x="110" y="260" width="40" height="30" rx="10" />
-                  <!-- Right Elbow -->
                   <rect class="body-part" data-part="Elbow" x="250" y="260" width="40" height="30" rx="10" />
-                  <!-- Left Forearm / Wrist -->
                   <path class="body-part" data-part="Wrist" d="M112 290 L148 290 L140 370 L118 370 Z" />
-                  <!-- Right Forearm / Wrist -->
                   <path class="body-part" data-part="Wrist" d="M252 290 L288 290 L280 370 L258 370 Z" />
-                  <!-- Left Hand -->
                   <path class="body-part" data-part="Hand" d="M115 370 L143 370 L148 410 L110 410 Z" />
-                  <!-- Right Hand -->
                   <path class="body-part" data-part="Hand" d="M255 370 L283 370 L288 410 L250 410 Z" />
-                  <!-- Left Fingers -->
                   <path class="body-part sub-part" data-part="Fingers" d="M110 410 L148 410 L152 440 L106 440 Z" />
-                  <!-- Right Fingers -->
                   <path class="body-part sub-part" data-part="Fingers" d="M250 410 L288 410 L292 440 L246 440 Z" />
-                  <!-- Hip -->
                   <path class="body-part" data-part="Hip" d="M160 320 L240 320 L250 365 L150 365 Z" />
-                  <!-- Left Thigh -->
                   <path class="body-part" data-part="Thigh" d="M155 365 L198 365 L192 480 L150 480 Z" />
-                  <!-- Right Thigh -->
                   <path class="body-part" data-part="Thigh" d="M202 365 L245 365 L250 480 L208 480 Z" />
-                  <!-- Left Knee -->
                   <ellipse class="body-part" data-part="Knee" cx="172" cy="500" rx="24" ry="22" />
-                  <!-- Right Knee -->
                   <ellipse class="body-part" data-part="Knee" cx="228" cy="500" rx="24" ry="22" />
-                  <!-- Left Leg -->
                   <path class="body-part" data-part="Leg" d="M150 520 L194 520 L188 610 L152 610 Z" />
-                  <!-- Right Leg -->
                   <path class="body-part" data-part="Leg" d="M206 520 L250 520 L248 610 L210 610 Z" />
-                  <!-- Left Ankle -->
                   <ellipse class="body-part" data-part="Ankle" cx="170" cy="625" rx="20" ry="14" />
-                  <!-- Right Ankle -->
                   <ellipse class="body-part" data-part="Ankle" cx="230" cy="625" rx="20" ry="14" />
-                  <!-- Left Foot -->
                   <path class="body-part" data-part="Foot" d="M148 638 L192 638 L196 670 L140 670 Z" />
-                  <!-- Right Foot -->
                   <path class="body-part" data-part="Foot" d="M208 638 L252 638 L260 670 L204 670 Z" />
-
-                  <!-- Scan line -->
-                  <line class="body-scanline" x1="100" y1="0" x2="300" y2="0" stroke="url(#scanGrad2)" stroke-width="2" opacity="0.5"/>
-                  <defs>
-                    <linearGradient id="scanGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stop-color="transparent"/>
-                      <stop offset="50%" stop-color="#00D1FF"/>
-                      <stop offset="100%" stop-color="transparent"/>
-                    </linearGradient>
-                  </defs>
                 </svg>
-
-                <!-- Pulse indicators -->
                 <div class="pulse-dot" data-part="Head" style="top:8%;left:50%"></div>
                 <div class="pulse-dot" data-part="Chest" style="top:27%;left:50%"></div>
                 <div class="pulse-dot" data-part="Abdomen" style="top:39%;left:50%"></div>
@@ -220,111 +169,67 @@
               <!-- BACK VIEW -->
               <div class="anatomy-body-view" id="bodyBack">
                 <svg viewBox="0 0 400 700" fill="none" xmlns="http://www.w3.org/2000/svg" class="anatomy-svg">
-                  <!-- Head back -->
                   <ellipse class="body-part" data-part="Head" cx="200" cy="60" rx="38" ry="45" />
-                  <!-- Ears -->
                   <ellipse class="body-part sub-part" data-part="Ears" cx="160" cy="55" rx="6" ry="12" />
                   <ellipse class="body-part sub-part" data-part="Ears" cx="240" cy="55" rx="6" ry="12" />
-                  <!-- Neck back -->
                   <rect class="body-part" data-part="Neck" x="185" y="102" width="30" height="28" rx="8" />
-                  <!-- Shoulders back -->
                   <path class="body-part" data-part="Shoulder" d="M148 135 Q145 120 185 125 L185 150 L148 150 Z" />
                   <path class="body-part" data-part="Shoulder" d="M252 135 Q255 120 215 125 L215 150 L252 150 Z" />
-                  <!-- Upper Back -->
                   <path class="body-part" data-part="Back" d="M150 150 L250 150 L248 230 L152 230 Z" />
-                  <!-- Lower Back -->
                   <path class="body-part" data-part="Back" d="M155 230 L245 230 L240 320 L160 320 Z" />
-                  <!-- Arms -->
                   <path class="body-part" data-part="Arm" d="M115 150 L148 150 L148 260 L115 260 Z" />
                   <path class="body-part" data-part="Arm" d="M252 150 L285 150 L285 260 L252 260 Z" />
-                  <!-- Elbows -->
                   <rect class="body-part" data-part="Elbow" x="110" y="260" width="40" height="30" rx="10" />
                   <rect class="body-part" data-part="Elbow" x="250" y="260" width="40" height="30" rx="10" />
-                  <!-- Forearm / Wrist -->
                   <path class="body-part" data-part="Wrist" d="M112 290 L148 290 L140 370 L118 370 Z" />
                   <path class="body-part" data-part="Wrist" d="M252 290 L288 290 L280 370 L258 370 Z" />
-                  <!-- Hand -->
                   <path class="body-part" data-part="Hand" d="M115 370 L143 370 L148 410 L110 410 Z" />
                   <path class="body-part" data-part="Hand" d="M255 370 L283 370 L288 410 L250 410 Z" />
-                  <!-- Hip -->
                   <path class="body-part" data-part="Hip" d="M160 320 L240 320 L250 365 L150 365 Z" />
-                  <!-- Thighs -->
                   <path class="body-part" data-part="Thigh" d="M155 365 L198 365 L192 480 L150 480 Z" />
                   <path class="body-part" data-part="Thigh" d="M202 365 L245 365 L250 480 L208 480 Z" />
-                  <!-- Knees -->
                   <ellipse class="body-part" data-part="Knee" cx="172" cy="500" rx="24" ry="22" />
                   <ellipse class="body-part" data-part="Knee" cx="228" cy="500" rx="24" ry="22" />
-                  <!-- Legs -->
                   <path class="body-part" data-part="Leg" d="M150 520 L194 520 L188 610 L152 610 Z" />
                   <path class="body-part" data-part="Leg" d="M206 520 L250 520 L248 610 L210 610 Z" />
-                  <!-- Ankles -->
                   <ellipse class="body-part" data-part="Ankle" cx="170" cy="625" rx="20" ry="14" />
                   <ellipse class="body-part" data-part="Ankle" cx="230" cy="625" rx="20" ry="14" />
-                  <!-- Feet -->
                   <path class="body-part" data-part="Foot" d="M148 638 L192 638 L196 670 L140 670 Z" />
                   <path class="body-part" data-part="Foot" d="M208 638 L252 638 L260 670 L204 670 Z" />
-
-                  <line class="body-scanline" x1="100" y1="0" x2="300" y2="0" stroke="url(#scanGrad3)" stroke-width="2" opacity="0.5"/>
-                  <defs>
-                    <linearGradient id="scanGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stop-color="transparent"/>
-                      <stop offset="50%" stop-color="#00D1FF"/>
-                      <stop offset="100%" stop-color="transparent"/>
-                    </linearGradient>
-                  </defs>
                 </svg>
-
                 <div class="pulse-dot" data-part="Head" style="top:8%;left:50%"></div>
                 <div class="pulse-dot" data-part="Back" style="top:27%;left:50%"></div>
                 <div class="pulse-dot" data-part="Back" style="top:39%;left:50%"></div>
               </div>
 
-              <!-- Hover tooltip -->
+              <!-- Tooltip -->
               <div class="anatomy-tooltip" id="anatomyTooltip">
                 <span class="anatomy-tooltip-icon"></span>
                 <span class="anatomy-tooltip-label"></span>
               </div>
             </div>
 
-            <!-- Body part list (quick access) -->
-            <div class="anatomy-parts-list" id="partsListContainer">
-              <h3 class="anatomy-parts-title">Body Regions</h3>
-              <div class="anatomy-parts-grid" id="partsList"></div>
-            </div>
+            <!-- Body part chips -->
+            <div class="parts-list" id="partsList"></div>
           </div>
 
-          <!-- RIGHT: Symptom Detail Panel -->
+          <!-- RIGHT: Detail Panel -->
           <div class="anatomy-detail-panel" id="detailPanel">
-            <!-- Loading skeleton -->
-            <div class="panel-skeleton" id="panelSkeleton">
-              <div class="skel-bar skel-title"></div>
-              <div class="skel-bar skel-sub"></div>
-              <div class="skel-bar skel-block"></div>
-              <div class="skel-bar skel-block"></div>
-              <div class="skel-bar skel-sub"></div>
-              <div class="skel-bar skel-block"></div>
-            </div>
+            <div class="panel-skeleton" id="panelSkeleton"></div>
 
-            <!-- Empty state -->
             <div class="panel-empty" id="panelEmpty">
-              <div class="panel-empty-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                </svg>
-              </div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
               <h3>Select a Body Region</h3>
-              <p>Click on any body part on the anatomy map or use the search bar to explore symptoms, causes, and remedies.</p>
+              <p>Click on any body part or use the search to explore symptoms, causes, and remedies.</p>
             </div>
 
-            <!-- Body part detail (populated dynamically) -->
             <div class="panel-content" id="panelContent" style="display:none">
-              <!-- Header -->
               <div class="panel-header" id="panelHeader">
-                <button class="panel-back-btn" id="panelBackBtn" style="display:none">
+                <button class="symptom-detail-back" id="panelBackBtn" style="display:none">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                   Back
                 </button>
-                <div class="panel-header-info">
+                <div style="display:flex;align-items:center;gap:0.75rem;">
                   <span class="panel-icon" id="panelIcon"></span>
                   <div>
                     <h2 class="panel-title" id="panelTitle"></h2>
@@ -332,16 +237,8 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Symptom list view -->
-              <div class="panel-symptoms" id="panelSymptoms">
-                <!-- Populated by JS -->
-              </div>
-
-              <!-- Symptom detail view -->
-              <div class="panel-symptom-detail" id="panelSymptomDetail" style="display:none">
-                <!-- Populated by JS -->
-              </div>
+              <div class="panel-symptoms" id="panelSymptoms"></div>
+              <div class="panel-symptom-detail" id="panelSymptomDetail" style="display:none"></div>
             </div>
           </div>
 
@@ -349,36 +246,20 @@
       </div>
     </div>
 
-  </main>
-
-  <!-- Emergency Alert Panel -->
-  <div class="emergency-alert-panel" id="emergencyAlertPanel" style="display:none">
-    <div class="emergency-alert-glow"></div>
-    <div class="emergency-alert-content">
-      <div class="emergency-alert-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
-          <path d="M12 9v4"/>
-          <path d="M12 17h.01"/>
-        </svg>
-      </div>
-      <div class="emergency-alert-text">
-        <h3>⚠ Seek Immediate Medical Attention</h3>
-        <p>You have selected symptoms that may require urgent care. Please call emergency services or visit the nearest emergency room.</p>
-      </div>
+    <!-- Emergency Alert -->
+    <div class="emergency-alert" id="emergencyAlertPanel" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+      <p>You have selected symptoms that may require urgent care. Please call emergency services or visit the nearest emergency room.</p>
       <button class="emergency-alert-close" id="emergencyAlertClose" aria-label="Close alert">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 6L6 18M6 6l12 12"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-  </div>
 
-  <!-- Ripple effect element -->
-  <div class="ripple-container" id="rippleContainer"></div>
+    <div id="rippleContainer" style="display:none"></div>
+  </main>
 
-  <script src="js/app.js"></script>
   <script src="js/symptoms.js"></script>
+  <script src="js/app.js"></script>
   <script src="js/anatomy.js"></script>
 </body>
 </html>

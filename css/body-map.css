@@ -1,970 +1,696 @@
 /* ============================================
-   BODY MAP PAGE — LAYOUT & COMPONENTS
+   BODY MAP PAGE — Clean Minimal Design
    ============================================ */
 
-/* ---- Page ---- */
 .anatomy-page {
   min-height: 100vh;
   padding-top: var(--nav-height);
   background: var(--bg-primary);
 }
 
-/* ---- Top Bar ---- */
+/* Top Bar */
 .anatomy-topbar {
-  padding: var(--space-lg) 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-  background: var(--bg-glass);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  padding: 0.875rem 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
   position: sticky;
   top: var(--nav-height);
-  z-index: var(--z-sticky);
+  z-index: 100;
 }
+
 .anatomy-topbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-lg);
+  gap: 1rem;
   flex-wrap: wrap;
 }
+
 .anatomy-breadcrumb {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
-  font-size: 0.85rem;
-  color: var(--text-secondary);
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
   white-space: nowrap;
 }
-.anatomy-breadcrumb a {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: var(--font-weight-medium);
-  transition: color var(--transition-fast);
-}
+.anatomy-breadcrumb a { color: var(--accent); font-weight: 500; }
+.anatomy-breadcrumb svg { width: 14px; height: 14px; }
 
-.anatomy-breadcrumb a:hover {
-  color: var(--primary-dark);
-}
-.anatomy-breadcrumb svg {
-  width: 14px;
-  height: 14px;
-}
-
-/* ---- Search ---- */
+/* Search */
 .anatomy-search {
   position: relative;
   flex: 1;
-  max-width: 480px;
+  max-width: 400px;
 }
+
 .anatomy-search-icon {
   position: absolute;
-  left: 14px;
+  left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
-  color: var(--text-secondary);
+  width: 16px;
+  height: 16px;
+  color: var(--text-tertiary);
   pointer-events: none;
 }
+
 .anatomy-search-input {
   width: 100%;
-  padding: var(--space-sm) var(--space-md) var(--space-sm) var(--space-2xl);
-  background: var(--bg-card);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: var(--radius-lg);
+  padding: 0.5rem 0.75rem 0.5rem 2.25rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   color: var(--text-primary);
-  font-family: var(--font-primary);
-  font-size: var(--text-sm);
-  outline: none;
-  transition: all var(--transition-fast);
+  font-size: 0.8125rem;
+  transition: all var(--transition);
 }
-
 .anatomy-search-input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px var(--success-bg);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
 }
-
-.anatomy-search-input::placeholder {
-  color: var(--text-muted);
-}
+.anatomy-search-input::placeholder { color: var(--text-tertiary); }
 
 .anatomy-search-results {
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 4px);
   left: 0;
   right: 0;
   background: var(--bg-card);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: var(--radius-lg);
-  max-height: 340px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  max-height: 300px;
   overflow-y: auto;
-  box-shadow: var(--shadow-lg);
-  z-index: var(--z-dropdown);
+  box-shadow: var(--shadow-card-hover);
+  z-index: 200;
   display: none;
 }
-
-.anatomy-search-results.open {
-  display: block;
-}
+.anatomy-search-results.open { display: block; }
 
 .search-result-item {
-  padding: var(--space-sm) var(--space-md);
+  padding: 0.625rem 0.875rem;
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 0.625rem;
   cursor: pointer;
-  transition: all var(--transition-fast);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  transition: background var(--transition);
+  border-bottom: 1px solid var(--border);
 }
+.search-result-item:hover { background: var(--bg-secondary); }
+.search-result-item:last-child { border-bottom: none; }
 
-.search-result-item:hover {
-  background: var(--bg-secondary);
-}
+.search-result-icon { font-size: 1rem; width: 24px; text-align: center; }
 
-.search-result-item:last-child {
-  border-bottom: none;
-}
-
-.search-result-icon {
-  font-size: 1.2rem;
-  width: 28px;
-  text-align: center;
-}
-
-.search-result-info {
-  flex: 1;
-}
-.search-result-name {
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--text-primary);
-}
-
-.search-result-part {
-  font-size: var(--text-xs);
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+.search-result-info { flex: 1; }
+.search-result-name { font-size: 0.8125rem; font-weight: 500; color: var(--text-primary); }
+.search-result-part { font-size: 0.6875rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.5px; }
 
 .search-result-severity {
-  font-size: var(--text-xs);
+  font-size: 0.6875rem;
   padding: 2px 8px;
   border-radius: var(--radius-full);
-  font-weight: var(--font-weight-semibold);
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-.search-result-severity.mild {
-  background: var(--success-bg);
-  color: var(--success);
-}
+.search-result-severity.mild { background: var(--success-bg); color: var(--success); }
+.search-result-severity.moderate { background: var(--warning-bg); color: var(--warning); }
+.search-result-severity.severe { background: var(--error-bg); color: var(--error); }
 
-.search-result-severity.moderate {
-  background: var(--warning-bg);
-  color: var(--warning);
-}
+/* Main Layout */
+.anatomy-content { padding: 1.5rem 0 3rem; }
 
-.search-result-severity.severe {
-  background: var(--error-bg);
-  color: var(--error);
-}
-
-/* ---- Main Layout ---- */
-.anatomy-content {
-  padding: var(--space-2xl) 0 var(--space-4xl);
-}
 .anatomy-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-2xl);
+  gap: 1.5rem;
   align-items: start;
 }
 
-@media (max-width: 1024px) {
-  .anatomy-layout {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ---- Body Map Panel ---- */
+/* Body Map Panel */
 .anatomy-map-panel {
   position: sticky;
-  top: calc(var(--nav-height) + 70px);
+  top: calc(var(--nav-height) + 65px);
 }
-.anatomy-map-header {
-  margin-bottom: var(--space-lg);
-}
+
+.anatomy-map-header { margin-bottom: 1rem; }
+
 .anatomy-map-title {
-  font-family: var(--font-heading);
-  font-size: var(--text-xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--text-primary);
-  margin-bottom: var(--space-md);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
 }
+
 .anatomy-map-controls {
   display: flex;
-  gap: var(--space-md);
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
-/* Gender Toggle - Premium Design */
-.gender-toggle,
-.view-toggle {
+.gender-toggle, .view-toggle {
   display: flex;
   background: var(--bg-secondary);
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   overflow: hidden;
 }
 
-.gender-btn,
-.view-btn {
-  padding: var(--space-sm) var(--space-md);
+.gender-btn, .view-btn {
+  padding: 0.375rem 0.875rem;
   background: none;
   border: none;
-  color: var(--text-secondary);
-  font-family: var(--font-primary);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
+  color: var(--text-tertiary);
+  font-size: 0.8125rem;
+  font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
-  transition: all var(--transition-fast);
+  gap: 0.375rem;
+  transition: all var(--transition);
 }
 
-.gender-btn svg,
-.view-btn svg {
-  width: 14px;
-  height: 14px;
-}
-.gender-btn.active,
-.view-btn.active {
-  background: var(--bg-primary);
-  color: var(--primary);
-  box-shadow: var(--shadow-sm);
+.gender-btn svg, .view-btn svg { width: 16px; height: 16px; }
+
+.gender-btn.active, .view-btn.active {
+  background: var(--bg-card);
+  color: var(--accent);
+  box-shadow: var(--shadow-card);
 }
 
-.gender-btn:hover:not(.active),
-.view-btn:hover:not(.active) {
-  color: var(--text-primary);
-  background: var(--bg-tertiary);
-}
-
-/* ---- Body SVG Area - Premium Design ---- */
+/* Body SVG Container */
 .anatomy-body-wrapper {
   position: relative;
   background: var(--bg-card);
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  border-radius: var(--radius-xl);
-  padding: var(--space-xl) var(--space-lg);
-  min-height: 500px;
-  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  min-height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
-.anatomy-body-glow {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
+.anatomy-body-glow { display: none; }
+
 .anatomy-body-view {
   display: none;
-  position: relative;
   width: 100%;
-  max-width: 320px;
+  position: relative;
 }
-.anatomy-body-view.active {
-  display: block;
-}
+.anatomy-body-view.active { display: block; }
+
 .anatomy-svg {
   width: 100%;
-  height: auto;
+  max-width: 320px;
+  margin: 0 auto;
+  display: block;
 }
 
-/* Body part regions */
+/* Body Parts */
 .body-part {
-  fill: rgba(0, 209, 255, 0.06);
-  stroke: rgba(0, 209, 255, 0.2);
+  fill: transparent;
+  stroke: var(--accent);
   stroke-width: 1;
+  opacity: 0.35;
   cursor: pointer;
-  transition: fill 0.3s, stroke 0.3s, filter 0.3s;
+  transition: all var(--transition);
 }
 .body-part:hover {
-  fill: rgba(0, 209, 255, 0.18);
-  stroke: rgba(0, 209, 255, 0.6);
-  filter: drop-shadow(0 0 8px rgba(0, 209, 255, 0.3));
+  opacity: 0.7;
+  fill: var(--accent-glow);
 }
 .body-part.active {
-  fill: rgba(0, 209, 255, 0.25);
-  stroke: var(--accent-cyan);
+  opacity: 1;
+  fill: var(--accent-glow);
   stroke-width: 2;
-  filter: drop-shadow(0 0 12px rgba(0, 209, 255, 0.4));
 }
-.body-part.sub-part {
-  fill: rgba(0, 209, 255, 0.02);
-  stroke: rgba(0, 209, 255, 0.08);
-}
-.body-part.sub-part:hover {
-  fill: rgba(0, 209, 255, 0.12);
-  stroke: rgba(0, 209, 255, 0.5);
-}
+.body-part.sub-part { stroke-width: 0.5; opacity: 0.2; }
+.body-part.sub-part:hover { opacity: 0.5; }
 
 /* Scan line */
-.body-scanline {
-  animation: scanDown 4s linear infinite;
-}
-@keyframes scanDown {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(700px); }
-}
+.body-scanline { display: none; }
 
 /* Pulse dots */
 .pulse-dot {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background: var(--accent-cyan);
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
+  background: var(--accent);
   transform: translate(-50%, -50%);
   cursor: pointer;
-  z-index: 5;
-}
-.pulse-dot::before {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 2px solid var(--accent-cyan);
-  animation: pulseRing 2s ease-out infinite;
-}
-@keyframes pulseRing {
-  0% { transform: scale(1); opacity: 0.7; }
-  100% { transform: scale(2.5); opacity: 0; }
+  animation: pulse 2s ease-in-out infinite;
 }
 
 /* Tooltip */
 .anatomy-tooltip {
   position: absolute;
-  background: rgba(7, 17, 31, 0.95);
-  border: 1px solid rgba(0, 209, 255, 0.3);
-  border-radius: var(--radius-md);
-  padding: 6px 14px;
-  font-size: 0.82rem;
-  color: var(--text-primary);
+  padding: 0.375rem 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card-hover);
+  font-size: 0.8125rem;
+  font-weight: 500;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.2s;
-  z-index: 10;
+  transition: opacity 0.15s ease;
+  z-index: 100;
   white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 6px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  gap: 0.375rem;
 }
-.anatomy-tooltip.visible {
-  opacity: 1;
-}
+.anatomy-tooltip.visible { opacity: 1; }
+.anatomy-tooltip-icon { font-size: 1rem; }
+.anatomy-tooltip-label { color: var(--text-primary); }
 
-/* ---- Parts List ---- */
-.anatomy-parts-list {
-  margin-top: var(--space-xl);
-}
-.anatomy-parts-title {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  margin-bottom: var(--space-md);
-  font-weight: 500;
-}
-.anatomy-parts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-  gap: 8px;
-}
-.part-chip {
-  padding: 8px 10px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(0, 209, 255, 0.08);
-  border-radius: var(--radius-md);
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
-.part-chip:hover {
-  background: rgba(0, 209, 255, 0.1);
-  border-color: rgba(0, 209, 255, 0.25);
-  color: var(--text-primary);
-}
-.part-chip.active {
-  background: rgba(0, 209, 255, 0.15);
-  border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
-}
-.part-chip-icon {
-  font-size: 1rem;
-}
-
-/* ============================================
-   RIGHT PANEL — DETAIL / SYMPTOMS
-   ============================================ */
+/* Detail Panel */
 .anatomy-detail-panel {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(0, 209, 255, 0.08);
-  border-radius: var(--radius-xl);
-  padding: var(--space-2xl);
-  min-height: 600px;
-  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
-/* Skeleton */
-.panel-skeleton {
-  display: none;
-}
-.panel-skeleton.visible {
-  display: block;
-}
-.skel-bar {
-  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
-  background-size: 200% 100%;
-  animation: skelShimmer 1.5s infinite;
-  border-radius: var(--radius-sm);
-  margin-bottom: var(--space-md);
-}
-.skel-title { height: 28px; width: 60%; }
-.skel-sub { height: 16px; width: 40%; }
-.skel-block { height: 80px; width: 100%; }
-@keyframes skelShimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+.panel-empty, .panel-skeleton, .panel-content {
+  padding: 2rem 1.5rem;
 }
 
-/* Empty state */
 .panel-empty {
   text-align: center;
-  padding: var(--space-4xl) var(--space-xl);
+  color: var(--text-tertiary);
 }
-.panel-empty-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto var(--space-xl);
-  border-radius: 50%;
-  background: rgba(0, 209, 255, 0.06);
-  border: 1px solid rgba(0, 209, 255, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.panel-empty-icon svg {
-  width: 36px;
-  height: 36px;
-  color: var(--accent-cyan);
-}
-.panel-empty h3 {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  color: var(--text-primary);
-  margin-bottom: var(--space-sm);
-}
-.panel-empty p {
-  color: var(--text-secondary);
-  font-size: 0.88rem;
-  max-width: 320px;
-  margin: 0 auto;
-  line-height: 1.6;
+.panel-empty svg {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+  opacity: 0.3;
 }
 
-/* Panel header */
+/* Parts List */
+.parts-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.part-chip {
+  padding: 0.375rem 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+.part-chip:hover { border-color: var(--border-hover); color: var(--text-primary); }
+.part-chip.active { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+
+/* Panel Header */
 .panel-header {
-  margin-bottom: var(--space-xl);
-}
-.panel-back-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
-  background: none;
-  border: none;
-  color: var(--accent-cyan);
-  font-family: var(--font-primary);
-  font-size: 0.85rem;
-  cursor: pointer;
-  padding: 0;
-  margin-bottom: var(--space-md);
-  transition: opacity 0.2s;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
 }
-.panel-back-btn:hover { opacity: 0.7; }
-.panel-back-btn svg { width: 16px; height: 16px; }
-.panel-header-info {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-}
-.panel-icon {
-  font-size: 2rem;
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 209, 255, 0.08);
-  border: 1px solid rgba(0, 209, 255, 0.15);
-  border-radius: var(--radius-lg);
-}
-.panel-title {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  color: var(--text-primary);
-}
-.panel-symptom-count {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-}
+.panel-icon { font-size: 1.5rem; }
+.panel-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 0; }
+.panel-symptom-count { font-size: 0.75rem; color: var(--text-tertiary); }
 
-/* Symptom list */
-.symptom-card {
-  padding: var(--space-lg);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(0, 209, 255, 0.08);
-  border-radius: var(--radius-lg);
-  margin-bottom: var(--space-md);
-  cursor: pointer;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.symptom-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  border-radius: 4px 0 0 4px;
-}
-.symptom-card.mild::before { background: #00FFC6; }
-.symptom-card.moderate::before { background: #FFC832; }
-.symptom-card.serious::before { background: #FF5C7A; }
+/* Symptoms List */
+.panel-symptoms { padding: 0.5rem 1.5rem 1.5rem; }
 
-.symptom-card:hover {
-  background: rgba(0, 209, 255, 0.06);
-  border-color: rgba(0, 209, 255, 0.2);
-  transform: translateX(4px);
-}
-.symptom-card-top {
+.symptom-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 6px;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: all var(--transition);
 }
-.symptom-card-name {
+.symptom-item:hover { padding-left: 0.5rem; }
+.symptom-item:last-child { border-bottom: none; }
+
+.symptom-name { font-size: 0.875rem; font-weight: 500; color: var(--text-primary); }
+
+.symptom-severity {
+  font-size: 0.6875rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
   font-weight: 600;
-  font-size: 1rem;
-  color: var(--text-primary);
+  text-transform: uppercase;
 }
-.symptom-card-arrow {
-  width: 18px;
-  height: 18px;
-  color: var(--text-secondary);
-  transition: transform 0.3s;
-}
-.symptom-card:hover .symptom-card-arrow {
-  transform: translateX(4px);
-  color: var(--accent-cyan);
-}
-.severity-badge {
+.symptom-severity.mild { background: var(--success-bg); color: var(--success); }
+.symptom-severity.moderate { background: var(--warning-bg); color: var(--warning); }
+.symptom-severity.serious { background: var(--error-bg); color: var(--error); }
+
+/* Symptom Detail */
+.symptom-detail { padding: 1.5rem; }
+
+.symptom-detail-back {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: 0.72rem;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  cursor: pointer;
+  padding: 0.375rem 0;
+}
+.symptom-detail-back svg { width: 16px; height: 16px; }
+.symptom-detail-back:hover { opacity: 0.8; }
+
+.symptom-detail h3 { font-size: 1.125rem; margin-bottom: 1rem; }
+
+.symptom-section {
+  margin-bottom: 1.25rem;
+}
+
+.symptom-section-title {
+  font-size: 0.75rem;
   font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 20px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  color: var(--text-tertiary);
+  margin-bottom: 0.5rem;
 }
-.severity-badge.mild {
-  background: rgba(0, 255, 198, 0.12);
-  color: #00FFC6;
+
+.symptom-section ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
 }
-.severity-badge.moderate {
-  background: rgba(255, 200, 50, 0.12);
-  color: #FFC832;
-}
-.severity-badge.serious {
-  background: rgba(255, 92, 122, 0.12);
-  color: #FF5C7A;
-}
-.severity-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-}
-.severity-dot.mild { background: #00FFC6; }
-.severity-dot.moderate { background: #FFC832; }
-.severity-dot.serious { background: #FF5C7A; }
-.severity-dot.pulse {
-  animation: severityPulse 1.5s ease-in-out infinite;
-}
-@keyframes severityPulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 currentColor; }
-  50% { opacity: 0.7; box-shadow: 0 0 8px 2px currentColor; }
-}
-.symptom-card-causes {
-  font-size: 0.8rem;
+
+.symptom-section li {
+  font-size: 0.8125rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  padding-left: 1rem;
+  position: relative;
 }
-.emergency-flag {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--danger);
-  margin-left: 8px;
-  animation: emergencyBlink 1.2s ease-in-out infinite;
+.symptom-section li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
 }
-@keyframes emergencyBlink {
+
+.symptom-section p {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+/* Emergency Alert */
+.emergency-alert {
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+.emergency-alert svg { width: 20px; height: 20px; color: var(--error); flex-shrink: 0; margin-top: 1px; }
+.emergency-alert p { font-size: 0.8125rem; color: var(--error); margin: 0; }
+
+.emergency-alert-close {
+  margin-left: auto;
+  color: var(--error);
+  opacity: 0.6;
+  cursor: pointer;
+}
+.emergency-alert-close:hover { opacity: 1; }
+
+/* Ripple container */
+.ripple-container { display: none; }
+
+/* Skeleton */
+.panel-skeleton { display: none; }
+.panel-skeleton.visible { display: block; }
+
+@keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
 
-/* ---- Symptom Detail View ---- */
+/* ============================================
+   DYNAMICALLY GENERATED STYLES (from anatomy.js)
+   ============================================ */
+
+/* Symptom Cards */
+.symptom-card {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.symptom-card:hover {
+  background: var(--bg-secondary);
+  padding-left: 1.25rem;
+}
+.symptom-card:last-child { border-bottom: none; }
+
+.symptom-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.375rem;
+}
+
+.symptom-card-name {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.symptom-card-arrow {
+  width: 16px;
+  height: 16px;
+  color: var(--text-tertiary);
+  transition: transform var(--transition);
+}
+.symptom-card:hover .symptom-card-arrow {
+  transform: translateX(3px);
+  color: var(--accent);
+}
+
+.symptom-card-causes {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  line-height: 1.5;
+}
+
+.emergency-flag {
+  font-size: 0.6875rem;
+  padding: 2px 6px;
+  background: var(--error-bg);
+  color: var(--error);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+}
+
+/* Severity Badge */
+.severity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.severity-badge.mild { background: var(--success-bg); color: var(--success); }
+.severity-badge.moderate { background: var(--warning-bg); color: var(--warning); }
+.severity-badge.serious { background: var(--error-bg); color: var(--error); }
+
+.severity-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.severity-dot.mild { background: var(--success); }
+.severity-dot.moderate { background: var(--warning); }
+.severity-dot.serious { background: var(--error); }
+.severity-dot.pulse { animation: pulse 2s ease-in-out infinite; }
+
+/* Emergency Banner */
+.emergency-banner {
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+.emergency-banner-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--error);
+}
+.emergency-banner-text h4 {
+  font-size: 0.875rem;
+  color: var(--error);
+  margin-bottom: 0.25rem;
+}
+.emergency-banner-text p {
+  font-size: 0.8125rem;
+  color: var(--error);
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* Symptom Detail */
 .symptom-detail-header {
-  margin-bottom: var(--space-xl);
+  margin-bottom: 1rem;
 }
 .symptom-detail-name {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  color: var(--text-primary);
-  margin-bottom: var(--space-sm);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 .symptom-detail-badges {
   display: flex;
-  gap: var(--space-sm);
   flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
+/* Detail Section */
 .detail-section {
-  margin-bottom: var(--space-xl);
-  padding: var(--space-lg);
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(0, 209, 255, 0.06);
-  border-radius: var(--radius-lg);
+  margin-bottom: 1.25rem;
 }
+
 .detail-section-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: var(--accent-cyan);
-  margin-bottom: var(--space-md);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  color: var(--text-tertiary);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
 }
 .detail-section-title svg {
   width: 16px;
   height: 16px;
 }
+
 .detail-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
 }
 .detail-list li {
-  position: relative;
-  padding: 6px 0 6px 18px;
-  font-size: 0.88rem;
+  font-size: 0.8125rem;
   color: var(--text-secondary);
+  padding-left: 1rem;
+  position: relative;
   line-height: 1.5;
 }
 .detail-list li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 13px;
-  width: 6px;
-  height: 6px;
+  top: 0.55em;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  background: var(--accent-cyan);
+  background: var(--accent);
 }
+
 .detail-text {
-  font-size: 0.88rem;
+  font-size: 0.8125rem;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.6;
+  margin: 0;
 }
 
-/* Emergency warning */
-.emergency-banner {
-  padding: var(--space-lg);
-  background: rgba(255, 92, 122, 0.08);
-  border: 1px solid rgba(255, 92, 122, 0.25);
-  border-radius: var(--radius-lg);
-  margin-bottom: var(--space-xl);
-  display: flex;
+/* Panel back button override */
+.panel-content .symptom-detail-back {
+  display: inline-flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0.375rem 0;
+  border: none;
+  background: none;
 }
-.emergency-banner-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 92, 122, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  animation: emergencyPulse 1.5s ease-in-out infinite;
-}
-@keyframes emergencyPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 92, 122, 0.4); }
-  50% { box-shadow: 0 0 0 8px rgba(255, 92, 122, 0); }
-}
-.emergency-banner-icon svg {
-  width: 20px;
-  height: 20px;
-  color: var(--danger);
-}
-.emergency-banner-text h4 {
-  color: var(--danger);
-  font-size: 0.9rem;
-  margin-bottom: 2px;
-}
-.emergency-banner-text p {
-  color: var(--text-secondary);
-  font-size: 0.82rem;
-  line-height: 1.4;
+.panel-content .symptom-detail-back svg { width: 16px; height: 16px; }
+.panel-content .symptom-detail-back:hover { opacity: 0.8; }
+
+/* Symptom detail view */
+.panel-symptom-detail {
+  padding: 1.25rem 1.5rem;
 }
 
-/* ---- Ripple Effect ---- */
-.ripple-container {
+/* Panel header info */
+.panel-header-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Panel back btn */
+.panel-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--accent);
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0.25rem 0;
+  margin-bottom: 0.75rem;
+}
+.panel-back-btn svg { width: 16px; height: 16px; }
+
+/* Parts list grid */
+.anatomy-parts-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+/* Ripple */
+.ripple {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  border-radius: 50%;
+  background: var(--accent-glow);
   pointer-events: none;
   z-index: 9999;
-}
-.ripple {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(0, 209, 255, 0.15);
-  transform: scale(0);
-  animation: rippleAnim 0.6s ease-out forwards;
-  pointer-events: none;
-}
-@keyframes rippleAnim {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
+  animation: ripple-expand 0.6s ease forwards;
 }
 
-/* ============================================
-   EMERGENCY ALERT PANEL
-   ============================================ */
-.emergency-alert-panel {
-  position: fixed;
-  top: calc(var(--nav-height) + 20px);
-  right: 20px;
-  width: 400px;
-  max-width: calc(100vw - 40px);
-  z-index: 1000;
-  animation: emergencySlideIn 0.5s ease-out;
-}
-
-@keyframes emergencySlideIn {
-  from {
-    transform: translateX(120%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.emergency-alert-glow {
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(circle, rgba(255, 92, 122, 0.3) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: emergencyGlowPulse 2s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes emergencyGlowPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.6;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.3;
-  }
-}
-
-.emergency-alert-content {
-  position: relative;
-  background: linear-gradient(135deg, rgba(255, 92, 122, 0.15) 0%, rgba(255, 92, 122, 0.08) 100%);
-  border: 2px solid rgba(255, 92, 122, 0.5);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 0 40px rgba(255, 92, 122, 0.3), 0 20px 60px rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-md);
-}
-
-.emergency-alert-icon {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  border-radius: 50%;
-  background: rgba(255, 92, 122, 0.2);
-  border: 2px solid rgba(255, 92, 122, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: emergencyIconPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes emergencyIconPulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(255, 92, 122, 0.7);
-  }
-  50% {
-    box-shadow: 0 0 0 12px rgba(255, 92, 122, 0);
-  }
-}
-
-.emergency-alert-icon svg {
-  width: 24px;
-  height: 24px;
-  color: var(--danger);
-}
-
-.emergency-alert-text {
-  flex: 1;
-}
-
-.emergency-alert-text h3 {
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  color: var(--danger);
-  margin-bottom: var(--space-sm);
-  font-weight: 700;
-}
-
-.emergency-alert-text p {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-.emergency-alert-close {
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  border-radius: 50%;
-  background: rgba(255, 92, 122, 0.1);
-  border: 1px solid rgba(255, 92, 122, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s;
-  color: var(--danger);
-}
-
-.emergency-alert-close:hover {
-  background: rgba(255, 92, 122, 0.2);
-  transform: rotate(90deg);
-}
-
-.emergency-alert-close svg {
-  width: 16px;
-  height: 16px;
-}
-
-/* ============================================
-   RESPONSIVE — BODY MAP
-   ============================================ */
-@media (max-width: 1024px) {
-  .anatomy-layout {
-    grid-template-columns: 1fr;
-  }
-  .anatomy-map-panel {
-    position: static;
-  }
-  .anatomy-detail-panel {
-    min-height: auto;
-  }
-  .emergency-alert-panel {
-    top: calc(var(--nav-height) + 10px);
-    right: 10px;
-    left: 10px;
-    width: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .anatomy-topbar-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .anatomy-search {
-    max-width: 100%;
-  }
-  .anatomy-body-wrapper {
-    min-height: 400px;
-    padding: var(--space-md);
-  }
-  .anatomy-parts-grid {
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  }
-  .anatomy-detail-panel {
-    padding: var(--space-lg);
-  }
-  .panel-title {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .anatomy-map-controls {
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
-  .gender-toggle,
-  .view-toggle {
-    width: 100%;
-  }
-  .gender-btn,
-  .view-btn {
-    flex: 1;
-    justify-content: center;
-  }
-  .anatomy-parts-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+@keyframes ripple-expand {
+  from { transform: scale(0); opacity: 0.5; }
+  to { transform: scale(4); opacity: 0; }
 }
