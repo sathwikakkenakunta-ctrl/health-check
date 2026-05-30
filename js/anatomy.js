@@ -34,6 +34,9 @@
   var currentPart = null;
   var currentSymptom = null;
   var selectedEmergencySymptoms = [];
+  var currentAnalysis = null;
+  var questionnaireSession = null;
+  var panelMode = 'empty';
 
   /* ---- View Toggle ---- */
   function switchView(view) {
@@ -129,9 +132,17 @@
   }
 
   /* ---- Select body part → show symptoms ---- */
-  function selectBodyPart(partName) {
+  function selectBodyPart(partName, options) {
+    options = options || {};
+    if (!options.skipQuestionnaire) {
+      window.location.href = 'question-flow.html?bodyPart=' + encodeURIComponent(partName) + '&reset=1';
+      return;
+    }
+
     currentPart = partName;
     currentSymptom = null;
+    currentAnalysis = null;
+    panelMode = 'questionnaire';
     highlightBodyParts(partName);
 
     /* Show loading skeleton briefly */
@@ -148,13 +159,26 @@
         return;
       }
 
+      if (options.skipQuestionnaire) {
+        showConditionResults(partName, null);
+        return;
+      }
+
       /* Populate header */
       panelIcon.textContent = partData.icon;
       panelTitle.textContent = partData.bodyPart;
-      panelSymptomCount.textContent = partData.symptoms.length + ' symptom' + (partData.symptoms.length !== 1 ? 's' : '') + ' found';
+      panelSymptomCount.textContent = 'Guided questions';
       panelBackBtn.style.display = 'none';
       panelSymptomDetail.style.display = 'none';
       panelSymptoms.style.display = 'block';
+
+      renderQuestionnaire(partName, partData);
+      panelContent.style.display = 'block';
+
+      if (window.innerWidth <= 1024) {
+        detailPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      return;
 
       /* Build symptom cards */
       var html = '';
@@ -204,11 +228,151 @@
   }
 
   /* ---- Select symptom → show detail ---- */
+  function renderQuestionnaire(partName, partData) {
+    var config = QuestionnaireEngine.getPartConfig(partName);
+    questionnaireSession = {
+      partName: partName,
+      startedAt: new Date().toISOString(),
+      answers: {}
+    };
+    window.BodyCheckAnswerSession = questionnaireSession;
+
+    var html = '<div class="questionnaire-panel">';
+    html += '<p class="questionnaire-intro">' + config.intro + '</p>';
+
+    config.questions.forEach(function (question, index) {
+      html += '<div class="question-block" data-question-id="' + question.id + '" data-question-type="' + question.type + '">';
+      html += '<div class="question-label"><span>' + (index + 1) + '</span>' + question.label + '</div>';
+      html += '<div class="question-options">';
+      question.options.forEach(function (option) {
+        var type = question.type === 'multiple' ? 'checkbox' : 'radio';
+        var value = option.value || option.label;
+        html += '<label class="question-option">';
+        html += '<input type="' + type + '" name="' + question.id + '" value="' + value + '" data-label="' + option.label + '">';
+        html += '<span>' + option.label + '</span>';
+        html += '</label>';
+      });
+      html += '</div>';
+      html += '</div>';
+    });
+
+    html += '<button class="btn btn-primary btn-sm questionnaire-submit" id="questionnaireSubmit" disabled>Analyze Conditions</button>';
+    html += '</div>';
+
+    panelSymptoms.innerHTML = html;
+
+    panelSymptoms.querySelectorAll('input').forEach(function (input) {
+      input.addEventListener('change', updateQuestionnaireAnswers);
+    });
+
+    document.getElementById('questionnaireSubmit').addEventListener('click', function () {
+      currentAnalysis = QuestionnaireEngine.analyze(partName, questionnaireSession.answers, partData);
+      questionnaireSession.completedAt = new Date().toISOString();
+      questionnaireSession.analysis = currentAnalysis;
+      showConditionResults(partName, currentAnalysis);
+    });
+  }
+
+  function updateQuestionnaireAnswers() {
+    var blocks = panelSymptoms.querySelectorAll('.question-block');
+    var complete = true;
+
+    blocks.forEach(function (block) {
+      var questionId = block.getAttribute('data-question-id');
+      var type = block.getAttribute('data-question-type');
+      var checked = block.querySelectorAll('input:checked');
+      var values = Array.prototype.map.call(checked, function (input) {
+        return input.getAttribute('data-label') || input.value;
+      });
+
+      questionnaireSession.answers[questionId] = type === 'multiple' ? values : (values[0] || '');
+      if (values.length === 0) complete = false;
+    });
+
+    var submit = document.getElementById('questionnaireSubmit');
+    if (submit) submit.disabled = !complete;
+  }
+
+  function showConditionResults(partName, analysis) {
+    var partData = SymptomsEngine.getByPart(partName);
+    if (!partData) return;
+
+    panelMode = 'results';
+    panelIcon.textContent = partData.icon;
+    panelTitle.textContent = partData.bodyPart;
+    panelSymptomCount.textContent = analysis ? 'Ranked condition analysis' : partData.symptoms.length + ' symptom' + (partData.symptoms.length !== 1 ? 's' : '') + ' found';
+    panelBackBtn.style.display = analysis ? 'flex' : 'none';
+    panelSymptomDetail.style.display = 'none';
+    panelSymptoms.style.display = 'block';
+    panelContent.style.display = 'block';
+
+    var ranked = analysis ? analysis.ranked : partData.symptoms.map(function (sym) {
+      return { symptom: sym, confidence: null };
+    });
+
+    var html = '';
+    if (analysis && analysis.emergencyWarnings.length > 0) {
+      html += '<div class="emergency-banner questionnaire-warning">';
+      html += '  <div class="emergency-banner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>';
+      html += '  <div class="emergency-banner-text"><h4>Urgent Symptom Combination</h4>';
+      analysis.emergencyWarnings.forEach(function (message) {
+        html += '<p>' + message + '</p>';
+      });
+      html += '  </div>';
+      html += '</div>';
+      showEmergencyAlert();
+    }
+
+    ranked.forEach(function (item) {
+      var sym = item.symptom;
+      var cls = SymptomsEngine.severityClass(sym.seriousness);
+      html += '<div class="symptom-card ' + cls + '" data-symptom="' + sym.name + '">';
+      html += '  <div class="symptom-card-top">';
+      html += '    <span class="symptom-card-name">' + sym.name;
+      if (sym.emergency) {
+        html += '    <span class="emergency-flag">Emergency</span>';
+      }
+      html += '    </span>';
+      html += '    <svg class="symptom-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      html += '  </div>';
+      html += '  <div class="condition-meta">';
+      html += '    <span class="severity-badge ' + cls + '"><span class="severity-dot ' + cls + ' pulse"></span> ' + sym.seriousness + '</span>';
+      if (item.confidence !== null) {
+        html += '    <span class="confidence-badge">' + item.confidence + '% match</span>';
+      }
+      html += '  </div>';
+      html += '  <div class="symptom-card-causes">' + sym.causes.slice(0, 3).join(' - ') + '</div>';
+      html += '</div>';
+    });
+
+    panelSymptoms.innerHTML = html;
+    animateSymptomCards(partName);
+  }
+
+  function animateSymptomCards(partName) {
+    var cards = panelSymptoms.querySelectorAll('.symptom-card');
+    cards.forEach(function (card, i) {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(16px)';
+      setTimeout(function () {
+        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, i * 80);
+
+      card.addEventListener('click', function (e) {
+        createRipple(e);
+        selectSymptom(partName, card.getAttribute('data-symptom'));
+      });
+    });
+  }
+
   function selectSymptom(partName, symptomName) {
     var result = SymptomsEngine.getSymptom(partName, symptomName);
     if (!result) return;
 
     currentSymptom = symptomName;
+    panelMode = 'detail';
     var sym = result.symptom;
     var cls = SymptomsEngine.severityClass(sym.seriousness);
 
@@ -301,8 +465,17 @@
 
   /* ---- Back button ---- */
   panelBackBtn.addEventListener('click', function () {
-    if (currentPart) {
-      selectBodyPart(currentPart);
+    if (!currentPart) return;
+
+    if (panelMode === 'detail' && currentAnalysis) {
+      showConditionResults(currentPart, currentAnalysis);
+    } else if (currentAnalysis) {
+      renderQuestionnaire(currentPart, SymptomsEngine.getByPart(currentPart));
+      panelSymptomCount.textContent = 'Guided questions';
+      panelBackBtn.style.display = 'none';
+      panelMode = 'questionnaire';
+    } else {
+      selectBodyPart(currentPart, { skipQuestionnaire: true });
     }
   });
 
@@ -376,7 +549,7 @@
           if (type === 'bodyPart') {
             selectBodyPart(part);
           } else {
-            selectBodyPart(part);
+            selectBodyPart(part, { skipQuestionnaire: true });
             setTimeout(function () {
               selectSymptom(part, sym);
             }, 500);
@@ -435,8 +608,10 @@
 
   /* ---- Init ---- */
   SymptomsEngine.onReady(function () {
-    initBodyParts();
-    buildPartsList();
+    QuestionnaireEngine.onReady(function () {
+      initBodyParts();
+      buildPartsList();
+    });
   });
 
 })();

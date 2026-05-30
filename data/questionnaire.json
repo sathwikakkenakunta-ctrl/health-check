@@ -1,0 +1,214 @@
+{
+  "default": {
+    "intro": "Answer a few quick questions to narrow the most relevant conditions.",
+    "questions": [
+      {
+        "id": "main_symptom",
+        "type": "multiple",
+        "label": "What are you noticing?",
+        "options": [
+          { "label": "Pain", "keywords": ["Pain", "Strain", "Sprain"], "weight": 2 },
+          { "label": "Stiffness", "keywords": ["Stiffness", "Tension"], "weight": 2 },
+          { "label": "Fatigue or weakness", "keywords": ["Fatigue", "Cramp"], "weight": 2 },
+          { "label": "Swelling or numbness", "keywords": ["Swelling", "Numbness"], "weight": 3, "flags": ["swelling_or_numbness"] }
+        ]
+      },
+      {
+        "id": "severity",
+        "type": "severity",
+        "label": "How severe is it?",
+        "options": [
+          { "label": "Mild", "value": "mild" },
+          { "label": "Moderate", "value": "moderate" },
+          { "label": "Severe", "value": "severe", "flags": ["severe_pain"] }
+        ]
+      },
+      {
+        "id": "duration",
+        "type": "duration",
+        "label": "How long has it lasted?",
+        "options": [
+          { "label": "Less than a day", "value": "short" },
+          { "label": "1-3 days", "value": "medium" },
+          { "label": "More than 3 days", "value": "long" }
+        ]
+      }
+    ],
+    "emergencyRules": [
+      {
+        "flags": ["severe_pain", "swelling_or_numbness"],
+        "message": "Severe pain with swelling or numbness can need urgent medical evaluation."
+      }
+    ]
+  },
+  "parts": {
+    "Head": {
+      "questions": [
+        {
+          "id": "location",
+          "type": "single",
+          "label": "Where is the pain or discomfort?",
+          "options": [
+            { "label": "Forehead or temples", "scores": { "Headache": 3, "Tension Headache": 2 } },
+            { "label": "One side of the head", "scores": { "Migraine": 4, "Headache": 1 } },
+            { "label": "Whole head", "scores": { "Headache": 2, "Dizziness": 1 } },
+            { "label": "No pain, mostly dizziness", "scores": { "Dizziness": 4 }, "flags": ["dizziness"] }
+          ]
+        },
+        {
+          "id": "severity",
+          "type": "severity",
+          "label": "How severe is it?",
+          "options": [
+            { "label": "Mild", "value": "mild" },
+            { "label": "Moderate", "value": "moderate" },
+            { "label": "Severe", "value": "severe", "scores": { "Migraine": 2, "Dizziness": 1 }, "flags": ["severe_head_pain"] }
+          ]
+        },
+        {
+          "id": "associated",
+          "type": "multiple",
+          "label": "Any other symptoms?",
+          "options": [
+            { "label": "Fever", "scores": { "Headache": 1, "Dizziness": 1 }, "flags": ["fever"] },
+            { "label": "Nausea", "scores": { "Migraine": 3, "Dizziness": 1 }, "flags": ["nausea"] },
+            { "label": "Light sensitivity", "scores": { "Migraine": 3 } },
+            { "label": "Spinning or faint feeling", "scores": { "Dizziness": 3 }, "flags": ["dizziness"] }
+          ]
+        },
+        {
+          "id": "duration",
+          "type": "duration",
+          "label": "How long has it lasted?",
+          "options": [
+            { "label": "Less than a day", "value": "short" },
+            { "label": "1-3 days", "value": "medium" },
+            { "label": "More than 3 days", "value": "long", "scores": { "Migraine": 1, "Tension Headache": 1 } }
+          ]
+        }
+      ],
+      "emergencyRules": [
+        {
+          "flags": ["severe_head_pain", "fever", "nausea"],
+          "message": "Severe head pain with fever and nausea may need urgent medical attention."
+        },
+        {
+          "flags": ["dizziness", "severe_head_pain"],
+          "message": "Severe head symptoms with dizziness can be urgent, especially if sudden or worsening."
+        }
+      ]
+    },
+    "Chest": {
+      "questions": [
+        {
+          "id": "pain_type",
+          "type": "single",
+          "label": "What does the chest discomfort feel like?",
+          "options": [
+            { "label": "Burning", "scores": { "Heartburn": 4 } },
+            { "label": "Sharp pain", "scores": { "Chest Muscle Strain": 3, "Chest Tightness": 1 } },
+            { "label": "Pressure or tightness", "scores": { "Chest Tightness": 4 }, "flags": ["pressure"] },
+            { "label": "Soreness after movement", "scores": { "Chest Muscle Strain": 4 } }
+          ]
+        },
+        {
+          "id": "breathing",
+          "type": "single",
+          "label": "Any shortness of breath?",
+          "options": [
+            { "label": "No", "scores": { "Heartburn": 1, "Chest Muscle Strain": 1 } },
+            { "label": "Mild", "scores": { "Chest Tightness": 2 } },
+            { "label": "Yes, significant", "scores": { "Chest Tightness": 4 }, "flags": ["shortness_of_breath"] }
+          ]
+        },
+        {
+          "id": "associated",
+          "type": "multiple",
+          "label": "Any of these with it?",
+          "options": [
+            { "label": "Cough", "scores": { "Chest Tightness": 2 } },
+            { "label": "Fever", "scores": { "Chest Tightness": 2 }, "flags": ["fever"] },
+            { "label": "Worse during activity", "scores": { "Chest Tightness": 3 }, "flags": ["activity_pain"] },
+            { "label": "Worse after eating", "scores": { "Heartburn": 3 } }
+          ]
+        },
+        {
+          "id": "duration",
+          "type": "duration",
+          "label": "How long has it lasted?",
+          "options": [
+            { "label": "Minutes to hours", "value": "short" },
+            { "label": "1-3 days", "value": "medium" },
+            { "label": "More than 3 days", "value": "long" }
+          ]
+        }
+      ],
+      "emergencyRules": [
+        {
+          "flags": ["pressure", "shortness_of_breath"],
+          "message": "Chest pressure with shortness of breath can be an emergency. Consider urgent care immediately."
+        },
+        {
+          "flags": ["pressure", "activity_pain"],
+          "message": "Chest pressure during activity may require immediate medical evaluation."
+        }
+      ]
+    },
+    "Abdomen": {
+      "questions": [
+        {
+          "id": "location",
+          "type": "single",
+          "label": "Where is the abdominal discomfort?",
+          "options": [
+            { "label": "Upper abdomen", "scores": { "Indigestion": 3, "Bloating": 1 } },
+            { "label": "Lower abdomen", "scores": { "Gas": 2, "Stomach Pain": 2 } },
+            { "label": "All over", "scores": { "Bloating": 2, "Gas": 2, "Nausea": 1 } }
+          ]
+        },
+        {
+          "id": "pain_type",
+          "type": "single",
+          "label": "What does it feel like?",
+          "options": [
+            { "label": "Sharp pain", "scores": { "Stomach Pain": 4 }, "flags": ["sharp_pain"] },
+            { "label": "Cramping", "scores": { "Gas": 3, "Stomach Pain": 2 } },
+            { "label": "Fullness or bloating", "scores": { "Bloating": 4, "Indigestion": 1 } },
+            { "label": "Nausea", "scores": { "Nausea": 4 }, "flags": ["nausea"] }
+          ]
+        },
+        {
+          "id": "associated",
+          "type": "multiple",
+          "label": "Any other symptoms?",
+          "options": [
+            { "label": "Vomiting", "scores": { "Nausea": 3, "Stomach Pain": 1 }, "flags": ["vomiting"] },
+            { "label": "Diarrhea", "scores": { "Stomach Pain": 2, "Gas": 1 }, "flags": ["diarrhea"] },
+            { "label": "Fever", "scores": { "Stomach Pain": 2 }, "flags": ["fever"] },
+            { "label": "Worse after eating", "scores": { "Indigestion": 3, "Bloating": 1 } }
+          ]
+        },
+        {
+          "id": "duration",
+          "type": "duration",
+          "label": "How long has it lasted?",
+          "options": [
+            { "label": "Less than a day", "value": "short" },
+            { "label": "1-3 days", "value": "medium" },
+            { "label": "More than 3 days", "value": "long", "flags": ["long_duration"] }
+          ]
+        }
+      ],
+      "emergencyRules": [
+        {
+          "flags": ["sharp_pain", "fever", "vomiting"],
+          "message": "Sharp abdominal pain with fever and vomiting can need urgent medical care."
+        },
+        {
+          "flags": ["vomiting", "diarrhea", "long_duration"],
+          "message": "Vomiting and diarrhea lasting more than 3 days can cause dehydration and may need care."
+        }
+      ]
+    }
+  }
+}

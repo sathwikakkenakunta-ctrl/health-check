@@ -5,53 +5,6 @@
 (function () {
   'use strict';
 
-  /* ---- DOM References ---- */
-  var filterBtns = document.querySelectorAll('.filter-btn');
-  var doctorCards = document.querySelectorAll('.doctor-card');
-  var bookConsultationBtns = document.querySelectorAll('.book-consultation');
-
-  /* ---- Filter Functionality ---- */
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var filter = this.getAttribute('data-filter');
-      
-      /* Update active state */
-      filterBtns.forEach(function (b) {
-        b.classList.remove('active');
-      });
-      this.classList.add('active');
-
-      /* Filter doctor cards */
-      doctorCards.forEach(function (card) {
-        var specialty = card.getAttribute('data-specialty');
-        
-        if (filter === 'all' || specialty === filter) {
-          card.style.display = '';
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(8px)';
-          requestAnimationFrame(function () {
-            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          });
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
-
-  /* ---- Book Consultation Button ---- */
-  bookConsultationBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var card = this.closest('.doctor-card');
-      var doctorName = card.querySelector('.doctor-name').textContent;
-      var specialty = card.querySelector('.doctor-specialty').textContent;
-      
-      alert('Booking consultation with ' + doctorName + ' (' + specialty + ').\n\nThis would open a booking modal in the full implementation.');
-    });
-  });
-
   /* ---- Hospital Search ---- */
   var hospitalLocationInput = document.getElementById('hospitalLocationInput');
   var searchHospitalsBtn = document.getElementById('searchHospitalsBtn');
@@ -61,8 +14,12 @@
   var hospitalList = document.getElementById('hospitalList');
   var hospitalLoading = document.getElementById('hospitalLoading');
   var hospitalPlaceholder = document.getElementById('hospitalPlaceholder');
+  var hospitalBottomSheet = document.getElementById('hospitalBottomSheet');
+  var hospitalSheetContent = document.getElementById('hospitalSheetContent');
   var map = null;
   var markers = [];
+  var currentHospitals = [];
+  var currentUserLocation = null;
   var userLocationMarker = null;
   var selectedSymptom = null;
   var selectedBodyPart = null;
@@ -221,6 +178,181 @@
     return R * c;
   }
 
+  function escapeHTML(value) {
+    return String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function buildAddress(tags) {
+    var parts = [];
+    ['addr:housenumber', 'addr:street', 'addr:city', 'addr:state', 'addr:postcode'].forEach(function (key) {
+      if (tags && tags[key]) parts.push(tags[key]);
+    });
+    return parts.join(', ');
+  }
+
+  function getPhone(tags) {
+    return tags.phone || tags['contact:phone'] || tags.telephone || '';
+  }
+
+  function getWebsite(tags) {
+    return tags.website || tags['contact:website'] || '';
+  }
+
+  function websiteURL(value) {
+    if (!value) return '';
+    return /^https?:\/\//i.test(value) ? value : 'https://' + value;
+  }
+
+  function getEmergencyLabel(tags) {
+    if (tags.emergency === 'yes' || tags.emergency_service === 'yes') return 'Emergency care';
+    if (tags.emergency === 'no') return 'Emergency status unknown';
+    return 'Hospital';
+  }
+
+  /* Build Google Maps direction links while keeping Leaflet/OpenStreetMap as the map display provider. */
+  function googleMapsURL(hospital) {
+    return 'https://www.google.com/maps/dir/?api=1&destination=' + hospital.lat + ',' + hospital.lon;
+  }
+
+  /* Copy coordinates with a textarea fallback for older mobile browsers. */
+  function copyText(value) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(value);
+    }
+
+    var textArea = document.createElement('textarea');
+    textArea.value = value;
+    textArea.setAttribute('readonly', '');
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    textArea.remove();
+    return Promise.resolve();
+  }
+
+  /* Share hospital details when the Web Share API is available, otherwise copy the Maps URL. */
+  function shareHospital(hospital) {
+    var url = googleMapsURL(hospital);
+    var text = hospital.name + ' - ' + hospital.lat + ', ' + hospital.lon;
+
+    if (navigator.share) {
+      return navigator.share({
+        title: hospital.name,
+        text: text,
+        url: url
+      });
+    }
+
+    return copyText(url).then(function () {
+      alert('Google Maps link copied.');
+    });
+  }
+
+  function enrichHospital(hospital, index, userLocation) {
+    var tags = hospital.tags || {};
+    var distance = calculateDistance(userLocation.lat, userLocation.lng, hospital.lat, hospital.lon);
+    return {
+      id: 'hospital-' + index,
+      index: index,
+      lat: hospital.lat,
+      lon: hospital.lon,
+      name: hospital.name || 'Hospital',
+      tags: tags,
+      address: buildAddress(tags),
+      phone: getPhone(tags),
+      website: getWebsite(tags),
+      emergencyLabel: getEmergencyLabel(tags),
+      operator: tags.operator || '',
+      distanceMiles: distance,
+      distanceLabel: distance.toFixed(1) + ' mi'
+    };
+  }
+
+  function saveSelectedHospital(hospital) {
+    sessionStorage.setItem('bodycheck-selected-hospital', JSON.stringify({
+      hospital: hospital,
+      userLocation: currentUserLocation,
+      selectedSymptom: selectedSymptom,
+      selectedBodyPart: selectedBodyPart
+    }));
+  }
+
+  function selectHospital(index, options) {
+    options = options || {};
+    var hospital = currentHospitals[index];
+    if (!hospital) return;
+
+    saveSelectedHospital(hospital);
+
+    document.querySelectorAll('.hospital-card').forEach(function (card) {
+      card.classList.toggle('active', Number(card.getAttribute('data-index')) === index);
+    });
+
+    markers.forEach(function (marker, markerIndex) {
+      if (markerIndex === index) {
+        marker.openPopup();
+      } else {
+        marker.closePopup();
+      }
+    });
+
+    if (map && !options.skipPan) {
+      map.setView([hospital.lat, hospital.lon], Math.max(map.getZoom(), 15));
+    }
+
+    renderBottomSheet(hospital);
+  }
+
+  function openHospitalDetails(index) {
+    var hospital = currentHospitals[index];
+    if (!hospital) return;
+    saveSelectedHospital(hospital);
+    window.location.href = 'hospital-details.html';
+  }
+
+  function renderBottomSheet(hospital) {
+    if (!hospitalBottomSheet || !hospitalSheetContent) return;
+
+    var html = '<div class="hospital-sheet-header">';
+    html += '<div><div class="hospital-card-kicker">' + escapeHTML(hospital.emergencyLabel) + '</div>';
+    html += '<h3>' + escapeHTML(hospital.name) + '</h3></div>';
+    html += '<button class="hospital-sheet-close" id="hospitalSheetClose" aria-label="Close details">x</button>';
+    html += '</div>';
+    html += '<p class="hospital-card-meta">' + escapeHTML(hospital.distanceLabel) + ' away' + (hospital.address ? ' - ' + escapeHTML(hospital.address) : '') + '</p>';
+    if (hospital.phone || hospital.website || hospital.operator) {
+      html += '<div class="hospital-contact-row">';
+      if (hospital.phone) html += '<a href="tel:' + escapeHTML(hospital.phone) + '">Call</a>';
+      if (hospital.website) html += '<a href="' + escapeHTML(websiteURL(hospital.website)) + '" target="_blank" rel="noopener">Website</a>';
+      if (hospital.operator) html += '<span>' + escapeHTML(hospital.operator) + '</span>';
+      html += '</div>';
+    }
+    html += '<div class="hospital-card-actions">';
+    html += '<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="' + googleMapsURL(hospital) + '">Navigate</a>';
+    html += '<button class="btn btn-secondary btn-sm hospital-share-btn" id="hospitalSheetShare">Share</button>';
+    html += '<button class="btn btn-secondary btn-sm" id="hospitalSheetDetails">Details</button>';
+    html += '</div>';
+
+    hospitalSheetContent.innerHTML = html;
+    hospitalBottomSheet.classList.add('open');
+
+    document.getElementById('hospitalSheetClose').addEventListener('click', function () {
+      hospitalBottomSheet.classList.remove('open');
+    });
+    document.getElementById('hospitalSheetDetails').addEventListener('click', function () {
+      openHospitalDetails(hospital.index);
+    });
+    document.getElementById('hospitalSheetShare').addEventListener('click', function () {
+      shareHospital(hospital);
+    });
+  }
+
   /* Search hospitals by location */
   function searchHospitals(location) {
     if (!location) return;
@@ -287,6 +419,8 @@
       map.removeLayer(marker);
     });
     markers = [];
+    currentUserLocation = userLocation;
+    if (hospitalBottomSheet) hospitalBottomSheet.classList.remove('open');
 
     // Filter by symptom type if selected
     var symptomFilter = symptomTypeSelect ? symptomTypeSelect.value : 'all';
@@ -301,56 +435,104 @@
     // Create bounds for map
     var bounds = L.latLngBounds();
 
+    currentHospitals = filteredHospitals
+      .filter(function (hospital) { return hospital.lat && hospital.lon; })
+      .map(function (hospital, index) {
+        return enrichHospital(hospital, index, userLocation);
+      })
+      .sort(function (a, b) { return a.distanceMiles - b.distanceMiles; })
+      .slice(0, 20);
+
     // Create hospital list HTML
-    var listHTML = '';
+    var listHTML = '<div class="hospital-results-header"><div><strong>' + currentHospitals.length + ' hospitals found</strong><span>Sorted by distance</span></div></div>';
     
-    filteredHospitals.forEach(function (hospital, index) {
+    currentHospitals.forEach(function (hospital, index) {
+      hospital.index = index;
       // Add marker to map
       var marker = L.marker([hospital.lat, hospital.lon], {
         icon: L.divIcon({
-          className: 'custom-marker',
-          html: '<div style="background: #EF4444; width: 16px; height: 16px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 8px rgba(239,68,68,0.3);"></div>',
-          iconSize: [20, 20],
-          iconAnchor: [10, 10]
+          className: 'hospital-map-marker',
+          html: '<div class="hospital-marker-pin"><span>+</span></div>',
+          iconSize: [34, 42],
+          iconAnchor: [17, 38],
+          popupAnchor: [0, -36]
         })
       }).addTo(map);
       
       // Add popup
-      marker.bindPopup('<strong>' + hospital.name + '</strong>');
+      marker.bindPopup('<strong>' + escapeHTML(hospital.name) + '</strong><br><span>' + hospital.distanceLabel + ' away</span>');
+      marker.on('click', function () {
+        selectHospital(index, { skipPan: true });
+      });
       markers.push(marker);
       bounds.extend([hospital.lat, hospital.lon]);
 
-      // Calculate distance
-      var distance = calculateDistance(userLocation.lat, userLocation.lng, hospital.lat, hospital.lon);
-      var distanceMiles = distance.toFixed(1);
-
-      listHTML += '<div class="hospital-item" data-index="' + index + '">';
-      listHTML += '<div class="hospital-info">';
-      listHTML += '<h4>' + hospital.name + '</h4>';
-      listHTML += '<p>' + distanceMiles + ' miles away</p>';
+      listHTML += '<article class="hospital-card" data-index="' + index + '">';
+      listHTML += '<button class="hospital-card-main" data-action="select" data-index="' + index + '">';
+      listHTML += '<div class="hospital-card-top">';
+      listHTML += '<div><div class="hospital-card-kicker">' + escapeHTML(hospital.emergencyLabel) + '</div>';
+      listHTML += '<h4>' + escapeHTML(hospital.name) + '</h4></div>';
+      listHTML += '<span class="hospital-distance">' + escapeHTML(hospital.distanceLabel) + '</span>';
       listHTML += '</div>';
-      listHTML += '<button class="btn btn-secondary btn-sm get-directions-btn" data-lat="' + hospital.lat + '" data-lng="' + hospital.lon + '">Directions</button>';
+      if (hospital.address) {
+        listHTML += '<p class="hospital-card-meta">' + escapeHTML(hospital.address) + '</p>';
+      }
+      if (hospital.operator || hospital.phone || hospital.website) {
+        listHTML += '<div class="hospital-contact-row">';
+        if (hospital.operator) listHTML += '<span>Operator: ' + escapeHTML(hospital.operator) + '</span>';
+        if (hospital.phone) listHTML += '<span>' + escapeHTML(hospital.phone) + '</span>';
+        if (hospital.website) listHTML += '<span>Website</span>';
+        listHTML += '</div>';
+      }
+      listHTML += '</button>';
+      listHTML += '<div class="hospital-card-actions">';
+      listHTML += '<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="' + googleMapsURL(hospital) + '">Navigate</a>';
+      listHTML += hospital.phone ? '<a class="btn btn-secondary btn-sm" href="tel:' + escapeHTML(hospital.phone) + '">Call</a>' : '';
+      listHTML += '<button class="btn btn-secondary btn-sm hospital-copy-btn" data-index="' + index + '">Copy Coordinates</button>';
+      listHTML += '<button class="btn btn-secondary btn-sm hospital-share-btn" data-index="' + index + '">Share</button>';
+      listHTML += '<button class="btn btn-secondary btn-sm hospital-details-btn" data-index="' + index + '">Details</button>';
       listHTML += '</div>';
+      listHTML += '</article>';
     });
 
     // Fit map to show all hospitals
-    map.fitBounds(bounds, { padding: [50, 50] });
+    if (currentHospitals.length > 0) {
+      map.fitBounds(bounds, { padding: [50, 50] });
+    }
 
     // Update list
     hospitalList.innerHTML = listHTML;
 
-    // Add click handlers for directions
-    document.querySelectorAll('.get-directions-btn').forEach(function (btn) {
+    document.querySelectorAll('.hospital-card-main').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var lat = this.getAttribute('data-lat');
-        var lng = this.getAttribute('data-lng');
-        // Open in OpenStreetMap routing
-        window.open('https://www.openstreetmap.org/directions?from=' + userLocation.lat + ',' + userLocation.lng + '&to=' + lat + ',' + lng, '_blank');
+        selectHospital(Number(btn.getAttribute('data-index')));
+      });
+    });
+
+    document.querySelectorAll('.hospital-details-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        openHospitalDetails(Number(btn.getAttribute('data-index')));
+      });
+    });
+
+    document.querySelectorAll('.hospital-copy-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var hospital = currentHospitals[Number(btn.getAttribute('data-index'))];
+        copyText(hospital.lat + ', ' + hospital.lon).then(function () {
+          btn.textContent = 'Copied';
+          setTimeout(function () { btn.textContent = 'Copy Coordinates'; }, 1200);
+        });
+      });
+    });
+
+    document.querySelectorAll('.hospital-share-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        shareHospital(currentHospitals[Number(btn.getAttribute('data-index'))]);
       });
     });
 
     // Add hover effects for markers
-    document.querySelectorAll('.hospital-item').forEach(function (item, index) {
+    document.querySelectorAll('.hospital-card').forEach(function (item, index) {
       item.addEventListener('mouseenter', function () {
         if (markers[index]) {
           markers[index].openPopup();
@@ -362,6 +544,10 @@
         }
       });
     });
+
+    if (currentHospitals.length > 0) {
+      selectHospital(0, { skipPan: true });
+    }
   }
 
   /* Use user's current location */

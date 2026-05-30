@@ -86,28 +86,28 @@
 
       <!-- Page Header -->
       <div class="consultation-header">
-        <h1>Connect with <span class="text-gradient">Expert Doctors</span></h1>
-        <p>Book appointments, access telemedicine, and receive expert guidance.</p>
+        <h1>Find <span class="text-gradient">Care Nearby</span></h1>
+        <p>Locate hospitals, emergency care facilities, and helpful next steps.</p>
       </div>
 
       <!-- Stats -->
       <div class="consultation-stats">
         <div class="consultation-stats-grid">
           <div class="consultation-stat">
-            <div class="consultation-stat-value">500+</div>
-            <div class="consultation-stat-label">Verified Doctors</div>
+            <div class="consultation-stat-value">10km</div>
+            <div class="consultation-stat-label">Search Radius</div>
           </div>
           <div class="consultation-stat">
-            <div class="consultation-stat-value">50K+</div>
-            <div class="consultation-stat-label">Happy Patients</div>
+            <div class="consultation-stat-value">Live</div>
+            <div class="consultation-stat-label">Map Data</div>
           </div>
           <div class="consultation-stat">
             <div class="consultation-stat-value">24/7</div>
-            <div class="consultation-stat-label">Telemedicine</div>
+            <div class="consultation-stat-label">Emergency Lookup</div>
           </div>
           <div class="consultation-stat">
-            <div class="consultation-stat-value">4.9</div>
-            <div class="consultation-stat-label">Avg Rating</div>
+            <div class="consultation-stat-value">OSM</div>
+            <div class="consultation-stat-label">Open Map Source</div>
           </div>
         </div>
       </div>
@@ -158,93 +158,12 @@
         </div>
       </section>
 
-      <!-- Doctors -->
-      <section class="consultation-doctors" id="doctors">
-        <div class="section-header">
-          <h2>Our <span class="text-gradient">Doctors</span></h2>
-          <p>Certified healthcare professionals ready to help.</p>
-        </div>
-
-        <div class="consultation-filters">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="general">General</button>
-          <button class="filter-btn" data-filter="cardiology">Cardiology</button>
-          <button class="filter-btn" data-filter="neurology">Neurology</button>
-          <button class="filter-btn" data-filter="orthopedics">Orthopedics</button>
-          <button class="filter-btn" data-filter="dermatology">Dermatology</button>
-        </div>
-
-        <div class="doctors-grid">
-          <div class="doctor-card" data-specialty="cardiology">
-            <div class="doctor-avatar">&#x1F468;&#x200D;&#x2695;&#xFE0F;</div>
-            <div class="doctor-name">Dr. Sarah Johnson</div>
-            <div class="doctor-specialty">Cardiologist</div>
-            <div class="doctor-meta">
-              <span>15 yrs exp</span>
-              <span>4.9 rating</span>
-            </div>
-            <button class="book-consultation">Book Consultation</button>
-          </div>
-
-          <div class="doctor-card" data-specialty="neurology">
-            <div class="doctor-avatar">&#x1F469;&#x200D;&#x2695;&#xFE0F;</div>
-            <div class="doctor-name">Dr. Michael Chen</div>
-            <div class="doctor-specialty">Neurologist</div>
-            <div class="doctor-meta">
-              <span>12 yrs exp</span>
-              <span>4.8 rating</span>
-            </div>
-            <button class="book-consultation">Book Consultation</button>
-          </div>
-
-          <div class="doctor-card" data-specialty="general">
-            <div class="doctor-avatar">&#x1F468;&#x200D;&#x2695;&#xFE0F;</div>
-            <div class="doctor-name">Dr. Emily Williams</div>
-            <div class="doctor-specialty">General Practice</div>
-            <div class="doctor-meta">
-              <span>10 yrs exp</span>
-              <span>4.9 rating</span>
-            </div>
-            <button class="book-consultation">Book Consultation</button>
-          </div>
-
-          <div class="doctor-card" data-specialty="orthopedics">
-            <div class="doctor-avatar">&#x1F469;&#x200D;&#x2695;&#xFE0F;</div>
-            <div class="doctor-name">Dr. James Wilson</div>
-            <div class="doctor-specialty">Orthopedic Surgeon</div>
-            <div class="doctor-meta">
-              <span>18 yrs exp</span>
-              <span>4.7 rating</span>
-            </div>
-            <button class="book-consultation">Book Consultation</button>
-          </div>
-
-          <div class="doctor-card" data-specialty="dermatology">
-            <div class="doctor-avatar">&#x1F468;&#x200D;&#x2695;&#xFE0F;</div>
-            <div class="doctor-name">Dr. Lisa Park</div>
-            <div class="doctor-specialty">Dermatologist</div>
-            <div class="doctor-meta">
-              <span>8 yrs exp</span>
-              <span>4.9 rating</span>
-            </div>
-            <button class="book-consultation">Book Consultation</button>
-          </div>
-
-          <div class="doctor-card" data-specialty="cardiology">
-            <div class="doctor-avatar">&#x1F469;&#x200D;&#x2695;&#xFE0F;</div>
-            <div class="doctor-name">Dr. Robert Kim</div>
-            <div class="doctor-specialty">Cardiologist</div>
-            <div class="doctor-meta">
-              <span>20 yrs exp</span>
-              <span>4.8 rating</span>
-            </div>
-            <button class="book-consultation">Book Consultation</button>
-          </div>
-        </div>
-      </section>
-
       <!-- Hospital Finder -->
       <section class="hospital-finder" id="hospital-finder">
+        <a href="#services" class="hospital-finder-back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back
+        </a>
         <div class="section-header">
           <h2>Find <span class="text-gradient">Nearby Hospitals</span></h2>
           <p>Locate hospitals and emergency care facilities near you.</p>
@@ -286,6 +205,11 @@
                 <p>Enter your location to find nearby hospitals</p>
               </div>
             </div>
+          </div>
+
+          <div class="hospital-bottom-sheet" id="hospitalBottomSheet" aria-live="polite">
+            <div class="hospital-sheet-handle"></div>
+            <div class="hospital-sheet-content" id="hospitalSheetContent"></div>
           </div>
         </div>
       </section>
