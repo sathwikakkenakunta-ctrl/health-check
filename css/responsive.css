@@ -35,6 +35,53 @@
   .about-story-grid { grid-template-columns: 1fr; }
   .about-contributors-grid { grid-template-columns: repeat(2, 1fr); }
   .about-values { grid-template-columns: 1fr; }
+
+  /* Disease Library mobile spacing fixes */
+  .disease-library-page .page-content {
+    min-height: auto;
+  }
+  .disease-library-page .section-header {
+    margin-bottom: 1.5rem; /* 24px vertical rhythm on mobile */
+  }
+  .disease-library-page .disease-search-panel {
+    margin-bottom: 1.5rem; /* ensure compact spacing between search and list */
+  }
+
+  /* Prevent the status line from forcing a 240px flex-basis height on mobile */
+  .disease-library-page .disease-search-meta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .disease-library-page .disease-search-status {
+    /* override desktop flex-basis (1 1 240px) which becomes a large height in column layout */
+    flex: 0 1 auto !important;
+    min-width: 0;
+    margin-bottom: 0.25rem;
+  }
+
+  .disease-library-page .disease-grid {
+    margin-bottom: 1rem;
+    gap: 1rem; /* card spacing 16px */
+  }
+
+  /* Remove fixed card min-height on mobile so cards size to content */
+  .disease-library-page .disease-card {
+    min-height: auto !important;
+    padding: 1rem;
+  }
+
+  /* Container padding for mobile: 16px */
+  .disease-library-page .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .disease-library-page .important-note {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
 }
 
 /* Small mobile */
